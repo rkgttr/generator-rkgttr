@@ -112,7 +112,7 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
       '_bower.json',
       'gulpfile.js',
       'babelrc',
-      'index.jade',
+      'index.pug',
       'launch.command',
       'launch.bat',
       'main.js',
@@ -133,7 +133,7 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
     }
     this.directory( 'favicon', 'src/favicon' );
     this.directory( 'js', 'src/js' );
-    this.directory( 'jade', 'src/jade' );
+    this.directory( 'pug', 'src/pug' );
     this.expandFiles( '*', {
       cwd: this.sourceRoot(),
       dot: true
@@ -153,7 +153,7 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
     this.copy( 'gitignore', '.gitignore' );
     this.copy( 'babelrc', '.babelrc' );
     this.template( 'gulpfile.js' );
-    this.template( 'index.jade', 'src/jade/index.jade' );
+    this.template( 'index.pug', 'src/pug/index.pug' );
     this.template( 'main.js', 'src/js/main.js' );
     this.template( 'README.md', 'README.md' );
   }

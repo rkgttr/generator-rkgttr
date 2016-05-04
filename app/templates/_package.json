@@ -15,7 +15,7 @@
         "gulp-concat": "^2.6.0",
         "gulp-file-copy": "0.0.1",
         "gulp-imagemin": "^2.4.0",
-        "gulp-jade": "^1.1.0",
+        "gulp-pug": "^2.0.0",
         "gulp-load-plugins": "^1.0.0",
         "gulp-csso": "^1.0.1",
         "gulp-newer": "^1.0.0",

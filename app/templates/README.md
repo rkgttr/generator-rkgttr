@@ -22,8 +22,8 @@ Automates tasks such as minification, concatenation, compression, compilation, b
 **[Bower](http://bower.io/#getting-started)**  
 Bower works by fetching and installing packages from all over, taking care of hunting, finding, downloading, and saving the stuff you’re looking for.
 
-**[Jade](http://jade-lang.com/)**  
-Jade is a terse language for writing HTML templates.
+**[Pug](http://pug-lang.com/)**  
+Pug is a terse language for writing HTML templates.
 
 * Produces HTML
 * Supports dynamic code
@@ -41,7 +41,7 @@ Jade is a terse language for writing HTML templates.
 	    ├── css/
 	    ├── img/
 	    ├── js/
-	    ├── jade/
+	    ├── pug/
 	    |   └── includes/<% if (includeSCSS) { %>
 	    └── scss/
 	       ├── base/

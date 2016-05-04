@@ -15,7 +15,7 @@ var gulp = require( 'gulp' ),
   pngquant = require( 'imagemin-pngquant' ),
   mozjpeg = require( 'imagemin-mozjpeg' ),
   gulpCopy = require( 'gulp-file-copy' ),
-  jade = require( 'gulp-jade' ),
+  pug = require( 'gulp-pug' ),
   pkg = require('./package.json'),
   newer = require('gulp-newer'),
   addsrc = require('gulp-add-src');
@@ -80,10 +80,10 @@ gulp.task( 'styles', function () {
     .pipe( browserSync.stream() );
 } );
 
-gulp.task( 'jade', function () {
-  gulp.src( './src/jade/*.jade' )
+gulp.task( 'pug', function () {
+  gulp.src( './src/pug/*.pug' )
     .pipe(plumber())
-    .pipe( jade() )
+    .pipe( pug() )
     .pipe( gulp.dest( './build/' ) )
     .pipe( browserSync.stream() );
 } );
@@ -142,7 +142,7 @@ gulp.task( 'watch', function () {
   if ( !gulp.slurped ) {
     gulp.watch( './src/'+prepros+'/**/*.'+prepros, [ 'styles' ] );
     gulp.watch( './src/js/**/*.js', [ 'js' ] );
-    gulp.watch( './src/jade/**/*.jade', [ 'jade' ] );
+    gulp.watch( './src/pug/**/*.pug', [ 'pug' ] );
     gulp.watch( './src/img/**/*', [ 'images' ] );
     gulp.watch( './src/fonts/**/*', [ 'fonts' ] );
     gulp.watch( './src/favicon/**/*', [ 'favicon' ] );
@@ -151,4 +151,4 @@ gulp.task( 'watch', function () {
   }
 } );
 
-gulp.task( 'default', [ 'styles', 'js', 'mdnz', 'jade', 'images', 'favicon', 'fonts', 'watch', 'browser-sync' ] );
+gulp.task( 'default', [ 'styles', 'js', 'mdnz', 'pug', 'images', 'favicon', 'fonts', 'watch', 'browser-sync' ] );

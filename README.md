@@ -3,13 +3,13 @@
 This guide will help you through the process of setting up static frontend projects. This is a simple framework based on [NodeJS](http://nodejs.org/), [Yeoman](http://yeoman.io/), [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/) that automate a lot of tasks such as preprocessing your files and minify them. The framework includes:
 
 * A convenient folder structure.
-* An optional set of [Jade](http://jade-lang.com/) templates based on HTML5 Boilerplate to generate your pages.
+* An optional set of [pug](http://pug-lang.com/) templates based on HTML5 Boilerplate to generate your pages.
 * Several [LESS](http://lesscss.org/) files that compile in a single autoprefixed minified CSS files.
 * If you're a [SCSS](http://sass-lang.com/) person, you can use that too.
 * [jQuery](https://jquery.org/) and a few JavaScript helpers that compile in a single minified JavaScript file.
 * An image minifier.
 * A simple webserver that reloads automatically when you make changes.
-* A [Gulp](http://gulpjs.com/) observer that automatically compile your changes on LESS/SCSS/Jade/JavaScript files.
+* A [Gulp](http://gulpjs.com/) observer that automatically compile your changes on LESS/SCSS/Pug/JavaScript files.
 
 For editing code, I suggest that you use [Sublime Text](http://www.sublimetext.com/) with [Package Control](https://sublime.wbond.net/) to extends its functionalies. This is the best and most extensible editor at the moment, simple as that.
 
@@ -104,7 +104,7 @@ Don't forget to launch `launch` (or to manually launch the `gulp` command into y
 Open [http://localhost:3000/](http://localhost:3000/).
 
 There are two main folders in your folder: `build/` and `src/`. `build/` contains the compiled, concatenated and minified files you will deploy. You should never work into the `build` folder, if you do, you'll suffer immeasurable pain and die miserably. `src/` contains your working files, work here, and only here. 
-If you use Jade, save your Jade templates into the `src/jade folder`, and all your included Jade templates into the `src/jade/includes` folder. All generated HTML files will end up in the `build/` folder. If you don't use Jade, all the HTML files that you edit or create into the `src/` folder will be copied over the `build/` folder.
+If you use Pug, save your pug templates into the `src/pug folder`, and all your included Pug templates into the `src/pug/includes` folder. All generated HTML files will end up in the `build/` folder. If you don't use Pug, all the HTML files that you edit or create into the `src/` folder will be copied over the `build/` folder.
 
 Always write your JavaScript into `src/js/main.js`. You can use [ECMAScript 6](https://babeljs.io/) or standard ECMAScript 5. However, don't use any ES6 functionalities that depend on the Babel Polyfill. Your code will be minifed as ES5.
 

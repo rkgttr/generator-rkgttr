@@ -1,6 +1,6 @@
 {
   "name": "generator-rkgttr",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -8,7 +8,7 @@
   "author": {
     "name": "Erik Guittiere",
     "email": "rkgttr@gmail.com",
-    "url": "https://github.com/rkgttr"
+    "url": "https://github.com/rkgttr/generator-rkgttr"
   },
   "engines": {
     "node": ">=0.10.0"

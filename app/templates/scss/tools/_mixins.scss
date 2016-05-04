@@ -1,0 +1,111 @@
+/**
+ * Mixins
+ */
+@mixin reset-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  list-style-image: none;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin hide-text($height: null) {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+
+  @if $height {
+    @warn "The `hide-text` mixin has changed and no longer requires a height. The height argument will no longer be accepted in v5.0.0";
+  }
+}
+
+/**
+ * Breakpoints/ Media Queries
+ */
+@mixin bp-medium {
+  @media only screen and (min-width: 26em) {
+    @content;
+  }
+}
+
+@mixin hi-res { 
+  // This is the very long but bulletproof media query for high resolution displays.
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+/**
+ * SVG background images with PNG and retina fallback
+ */
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+  background-image: url(#{$image-path}/#{$name}.svg);
+  @if($size){
+    background-size: $size;
+  }
+  .no-svg &{
+    background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+      background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+    }
+  }
+}
+
+/**
+ * Background PNG and retina fallback
+ */
+$image-path: '../img' !default;
+$retina-suffix: '@2x';
+@mixin retina-image($name, $size:false){
+  background-image: url(#{$image-path}/#{$name}.png);
+  @if($size){
+    background-size: $size;
+  }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.png);
+  }
+}
+
+/** 
+ * Placeholders
+ */
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}

@@ -1,0 +1,47 @@
+{
+  "name": "generator-longtail",
+  "version": "0.2.10",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "rkgttr/generator-longtail",
+  "author": {
+    "name": "Erik Guittiere",
+    "email": "rkgttr@gmail.com",
+    "url": "https://github.com/rkgttr"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "html5",
+    "jQuery",
+    "Jade",
+    "LESS",
+    "SASS"
+  ],
+  "dependencies": {
+    "yeoman-generator": "~0.16.0",
+    "chalk": "~0.4.0",
+    "yosay": "^0.1.0",
+    "compare-version": "~0.1.0",
+    "multiline": "^0.3.4",
+    "pkg-name": "~0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=1.2.10"
+  }
+}

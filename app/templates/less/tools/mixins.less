@@ -1,0 +1,32 @@
+// ie8 inline block
+.inline-block() {
+	display: inline-block;
+	*display:inline;
+	zoom:1;
+	vertical-align: top;
+}
+// clearfix
+.clearfix() {
+	&:before,
+	&:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
+	}
+
+	&:after {
+	    clear: both;
+	}
+}
+// image replacement
+.ir () {
+	border: 0;
+    overflow: hidden;
+	*text-indent: -9999px;
+	text-transform: capitalize;
+	&:before {
+		content: "";
+   		display: block;
+    	width: 0;
+    	height: 150%;
+	}
+}

@@ -1,0 +1,16 @@
+doctype html
+html.no-js(lang='en')
+  include includes/head
+  body
+    <% if (includeForm) { %>
+    form
+      .wrapper
+        include includes/head
+        include includes/body-index
+        include includes/foot
+    <% } else { %>
+    .wrapper
+      include includes/header
+      include includes/body-index
+      include includes/footer
+    <% } %>

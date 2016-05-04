@@ -1,0 +1,9 @@
+{
+  "name": "<%= slugname %>",
+  "version": "<%= version %>",
+  "dependencies": {
+  	"modernizr": "~2.8.0",
+  	"jquery": "~1.11.1"
+  }
+}
+

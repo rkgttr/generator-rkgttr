@@ -1,0 +1,97 @@
+// build a grid units wrapper, usage is
+// .unit-wrapper(~".your-wrapper-class-name");
+// or
+// .unit-wrapper(~".your-wrapper-class-name, header, .other-class-name");
+// can't do a traditional mixin because of the opera shit
+.unit-wrapper(@classname) {
+    @{classname} {
+        letter-spacing: -0.31em;
+        // Webkit: collapse white-space between units/
+        
+        *letter-spacing: normal;
+        // reset IE < 8 
+        
+        *word-spacing: -0.43em;
+        // IE < 8: collapse white-space between units
+        
+        text-rendering: optimizespeed;
+        // Webkit: fixes text-rendering: optimizeLegibility 
+        // Sets the font stack to fonts known to work properly with the above letter
+        // and word spacings. See: https://github.com/yui/pure/issues/41/
+
+        // The following font stack makes Pure Grids work on all known environments.
+
+        // FreeSans: Ships with many Linux distros, including Ubuntu
+
+        // Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
+        //  Arial to get picked up by the browser, even though neither is available
+        //  in Chrome OS.
+
+        // Droid Sans: Ships with all versions of Android.
+
+        // Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
+        
+        
+        font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+        // Use flexbox when possible to avoid `letter-spacing` side-effects.
+        display: flex;
+        flex-flow: row wrap;
+        > * {
+
+        }
+    }
+    .opera-only:-o-prefocus, @{classname} {
+        word-spacing: -0.43em;
+    }
+}
+// build a grid unit
+//
+// arguments: 
+// @base: a fraction such as 1/2, 3/4, 0.5, 1, etc.
+// @args: an unlimited number of arguments by pair: fraction, mediaquery
+//
+// example:
+//.your-grid-unit-class {
+//    .unit(1, 1/2, ~"screen and (min-width: 1200px)", 1/3, ~"screen and (min-width: 980px)");
+//}
+.___LT-B-U____ {
+
+    font-family: @global-stack;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+.unit(@base, @args...) when (@base >= 1) {
+    &:extend(.___LT-B-U____);
+    width: percentage(round(@base, 6));
+    .loop(length(@args));
+    .loop(@i) when (@i > 0) {
+        .loop((@i - 2));
+        .build-unit(extract(@args, @i), extract(@args, @i - 1));
+    }
+}
+.unit(@base, @args...) when (@base < 1) {
+    &:extend(.___LT-B-U____);
+    width: percentage(round(@base, 6));
+    *width: percentage(round(@base, 6)) - 0.031%;
+    .loop(length(@args));
+    .loop(@i) when (@i > 0) {
+        .loop((@i - 2));
+        .build-unit(extract(@args, @i), extract(@args, @i - 1));
+    }
+}
+.build-unit(@mq; @fraction) when (@fraction >= 1){
+    @media @mq {
+        width: percentage(round(@fraction, 6));
+    }
+}
+.build-unit(@mq; @fraction) when (@fraction < 1) {
+    @media @mq {
+        width: percentage(round(@fraction, 6));
+        *width: percentage(round(@fraction, 6)) - 0.031%;
+    }
+}

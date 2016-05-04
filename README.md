@@ -1,4 +1,4 @@
-# Longtail Frontend Setup
+# RKGTTR Frontend Setup
 
 This guide will help you through the process of setting up static frontend projects. This is a simple framework based on [NodeJS](http://nodejs.org/), [Yeoman](http://yeoman.io/), [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/) that automate a lot of tasks such as preprocessing your files and minify them. The framework includes:
 
@@ -46,7 +46,7 @@ Install Yeoman by entering the following command:
 
 Install the project generator by entering the following command:
 
-    npm install -g generator-longtail
+    npm install -g generator-rkgttr
 
 And press Enter
 
@@ -60,7 +60,7 @@ Move into this folder then `shift + right click` and select "Open command window
 
 In the console that opens, type:
 
-	yo longtail
+	yo rkgttr
 
 Press Enter and answer the few questions about the project name, description and version.
 

@@ -12,9 +12,8 @@
 
 #### Build Tools & Preprocessors
 
-<% if (includeSCSS) { %>**[SASS](http://sass-lang.com/guide)**  
-An extension of CSS that adds power and elegance to the basic language. It allows to use variables, nested rules, mixins, inline imports, and more.<%  } else { %>**[LESS](http://lesscss.org/)**
-Less is a CSS pre-processor, meaning that it extends the CSS language, adding features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.<%  } %> 
+**[SASS](http://sass-lang.com/guide)**  
+An extension of CSS that adds power and elegance to the basic language. It allows to use variables, nested rules, mixins, inline imports, and more.
 
 **[Gulp](http://gulpjs.com/)**  
 Automates tasks such as minification, concatenation, compression, compilation, browser refreshing etc.
@@ -38,21 +37,15 @@ Pug is a terse language for writing HTML templates.
 	|   └── js/
 	|       └── vendor/
 	└── src/
-	    ├── css/
 	    ├── img/
 	    ├── js/
 	    ├── pug/
-	    |   └── includes/<% if (includeSCSS) { %>
+	    |   └── includes/
 	    └── scss/
 	       ├── base/
 	       ├── layout/
 	       ├── modules/
-	       └── tools/<%  } else { %>
-	    └── less/
-	       ├── base/
-	       ├── layout/
-	       ├── modules/
-	       └── tools/<%  } %>
+	       └── tools/
 	├── bower_components/
 	└── node_modules/
 

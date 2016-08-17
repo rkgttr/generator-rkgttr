@@ -1,5 +1,11 @@
-/**
- * Colours
- */
-$white: #ffffff;
-$black: #000000;
+// colours
+$focus-color: #129FEA;
+$input-error: #e9322d;
+
+// font
+$global-font: sans-serif;
+
+
+// breakpoints
+$medium: 'only screen and (min-width:48em)';
+$large: 'only screen and (min-width:64em)';

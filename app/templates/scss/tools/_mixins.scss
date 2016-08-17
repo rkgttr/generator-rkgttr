@@ -1,6 +1,4 @@
-/**
- * Mixins
- */
+// mixins
 @mixin reset-list {
   padding: 0;
   margin: 0;
@@ -8,21 +6,6 @@
   list-style-image: none;
 }
 
-@mixin transition($args...) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
-  transition: $args;
-}
-
-@mixin vertical-align {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
 
 @mixin hide-text($height: null) {
   overflow: hidden;
@@ -34,60 +17,62 @@
   }
 }
 
-/**
- * Breakpoints/ Media Queries
- */
-@mixin bp-medium {
-  @media only screen and (min-width: 26em) {
-    @content;
-  }
+// grid system
+// grid rows should extend %grid-row
+
+%grid-row {
+  letter-spacing: -0.31em;
+  <% if (supportIE8) { %>
+  *letter-spacing: normal;
+  *word-spacing: -0.43em;
+  <% } %>
+  text-rendering: optimizespeed;
+  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
-@mixin hi-res { 
-  // This is the very long but bulletproof media query for high resolution displays.
-  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-    @content;
+%grid-unit {
+  display: inline-block;
+  letter-spacing: normal;
+  <% if (supportIE8) { %>
+  *display: inline;
+  zoom: 1;
+  word-spacing: normal;
+  <% } %>
+  vertical-align: top;
+  text-rendering: auto;
+  font-family: $global-font;
+}
+/*
+example:
+.myDiv {
+  @include unit(1, 1/2, $medium, 1/3, $large) {
+    // other properties
   }
 }
-
-/**
- * SVG background images with PNG and retina fallback
+will output a 100% width div for mobiles, 50% width div for medium width device, 33.333% width div for large width devices
+We can ommit the mediaqueries and have only one arguments such as @include unit(1/2) {}
  */
-$image-path: '../img' !default;
-$fallback-extension: 'png' !default;
-$retina-suffix: '@2x';
-@mixin background-image($name, $size:false){
-  background-image: url(#{$image-path}/#{$name}.svg);
-  @if($size){
-    background-size: $size;
-  }
-  .no-svg &{
-    background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
 
-    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-      background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+ */
+@mixin unit($base, $mqs...){
+  @extend %grid-unit;
+  width: $base * 100%;
+  $i: 1;
+  @while $i <= length($mqs) {
+    @media #{nth($mqs, $i+1)} {
+      width: nth($mqs, $i) * 100%;
     }
+    $i: $i + 2;
   }
+  @content;
 }
 
-/**
- * Background PNG and retina fallback
- */
-$image-path: '../img' !default;
-$retina-suffix: '@2x';
-@mixin retina-image($name, $size:false){
-  background-image: url(#{$image-path}/#{$name}.png);
-  @if($size){
-    background-size: $size;
-  }
-  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-    background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.png);
-  }
-}
 
-/** 
- * Placeholders
- */
+// placeholders
 %clearfix {
   *zoom: 1;
   &:before, &:after {

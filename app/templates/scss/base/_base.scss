@@ -1,20 +1,18 @@
 body,
 html {
 	height: 100%;
-	background: red;
+	background: #fff;
 }
-body > form {
-  height:100%;
+.wrapper {
+  height: 100%;
 }
 // better default, can be changed to your convenience, comment the lines that you don't want
 * {
   box-sizing:inherit;
-  // transition: all .2s ease;
   background-repeat: no-repeat;
   position: relative;
   &:before,
   &:after {
-    // transition: all .2s ease;
     box-sizing:inherit;
     background-repeat: no-repeat;
     position: relative;

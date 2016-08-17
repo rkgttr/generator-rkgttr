@@ -8,7 +8,7 @@ var pkgName = require( 'pkg-name' );
 var multiline = require( 'multiline' );
 var compareVersion = require( 'compare-version' );
 
-var LongtailGenerator = yeoman.generators.Base.extend( {
+var RkgttrGenerator = yeoman.generators.Base.extend( {
   init: function () {
     this.pkg = require( '../package.json' );
 
@@ -55,12 +55,13 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
       name: 'features',
       message: 'What more would you like?',
       choices: [ {
-        name: 'Use SCSS (untick for LESS)',
-        value: 'includeSCSS',
-        checked: true
-      }, {
-        name: 'ASPX form included in the markup',
-        value: 'includeForm',
+        name: 'Support Internet Explorer 8',
+        value: 'supportIE8',
+        checked: false
+      },
+      {
+        name: 'Include jQuery',
+        value: 'includeJquery',
         checked: false
       } ]
     } ];
@@ -91,8 +92,8 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
       }
       this.slugname = this._.slugify( props.name );
       this.camelname = this._.camelize( this.slugname );
-      this.includeSCSS = hasFeature( 'includeSCSS' );
-      this.includeForm = hasFeature( 'includeForm' );
+      this.supportIE8 = hasFeature( 'supportIE8' );
+      this.includeJquery = hasFeature( 'includeJquery' );
       this.name = props.name;
       this.title = props.title;
       this.description = props.description;
@@ -112,10 +113,8 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
       '_bower.json',
       'gulpfile.js',
       'babelrc',
-      'index.pug',
       'launch.command',
       'launch.bat',
-      'main.js',
       'README.md'
     ];
     this.mkdir( 'src' );
@@ -126,11 +125,7 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
     this.mkdir( 'build/js' );
     this.mkdir( 'build/js/vendor' );
     this.mkdir( 'src/img/' );
-    if ( this.includeSCSS ) {
-      this.directory( 'scss', 'src/scss' );
-    } else {
-      this.directory( 'less', 'src/less' );
-    }
+    this.directory( 'scss', 'src/scss' );
     this.directory( 'favicon', 'src/favicon' );
     this.directory( 'js', 'src/js' );
     this.directory( 'pug', 'src/pug' );
@@ -143,20 +138,19 @@ var LongtailGenerator = yeoman.generators.Base.extend( {
       }
     }, this );
 
-    this.copy( '_package.json', 'package.json' );
-    this.copy( '_bower.json', 'bower.json' );
+    this.template( '_package.json', 'package.json' );
+    this.template( '_bower.json', 'bower.json' );
     this.copy( 'launch.command' );
     this.copy( 'launch.bat' );
+    this.copy( 'gitignore', '.gitignore' );
+    this.copy( 'babelrc', '.babelrc' );
   },
 
   projectfiles: function () {
-    this.copy( 'gitignore', '.gitignore' );
-    this.copy( 'babelrc', '.babelrc' );
-    this.template( 'gulpfile.js' );
-    this.template( 'index.pug', 'src/pug/index.pug' );
-    this.template( 'main.js', 'src/js/main.js' );
-    this.template( 'README.md', 'README.md' );
+    this.copy( 'gulpfile.js' );
+    this.copy( 'README.md', 'README.md' );
+
   }
 } );
 
-module.exports = LongtailGenerator;
+module.exports = RkgttrGenerator;

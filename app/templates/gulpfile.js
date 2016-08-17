@@ -3,9 +3,8 @@ var gulp = require( 'gulp' ),
   concat = require( 'gulp-concat' ),
   rename = require( 'gulp-rename' ),
   uglify = require( 'gulp-uglify' ),
-  babel = require( "gulp-babel" ),<% if (includeSCSS) { %>
-  sass = require( 'gulp-sass' ),<%  } else  { %>
-  less = require( 'gulp-less' ),<%  } %>
+  babel = require( "gulp-babel" ),
+  sass = require( 'gulp-sass' ),
   prefix = require( 'gulp-autoprefixer' ),
   cmq = require( 'gulp-combine-mq' ),
   minifyCSS = require( 'gulp-csso' ),
@@ -29,7 +28,6 @@ var banner = [
   ''
 ].join('\n');
 
-var prepros = <% if (includeSCSS) { %>'scss'<%  } else  { %>'less'<%  } %>;
 
 gulp.slurped = false;
 gulp.task( 'browser-sync', function () {
@@ -48,9 +46,9 @@ gulp.task( 'js', function () {
   gulp.src( [ './src/js/plugins.js', './src/js/main.js' ] )
     .pipe(plumber())
     .pipe( concat( 'global.min.js' ) )
-    .pipe( babel() )
+    .pipe( babel() )<% if (includeJquery) { %>
     .pipe(addsrc.prepend('./bower_components/jquery/dist/jquery.js'))
-    .pipe( concat( 'global.min.js' ) )
+    .pipe( concat( 'global.min.js' ) )<%}%>
     .pipe( uglify({
       preserveComments: 'license'
     }) )
@@ -68,11 +66,11 @@ gulp.task( 'mdnz', function () {
 
 gulp.task( 'styles', function () {
 
-  gulp.src( './src/'+prepros+'/main.'+prepros )
+  gulp.src( './src/scss/main.scss' )
     .pipe(plumber())
-    <% if (includeSCSS) { %>.pipe( sass() )<%  } else  { %>.pipe( less() )<%  } %>
+    .pipe( sass() )
     .pipe( cmq() )
-    .pipe( prefix( 'last 2 version', 'ie9' ) )
+    .pipe( prefix( 'last 2 versions', <% if (supportIE8) { %>'ie8'<% } else { %>'ie9'<% } %> ) )
     .pipe( rename( 'styles.min.css' ) )
     .pipe( minifyCSS() )
     .pipe(header(banner, {pkg: pkg}))
@@ -140,7 +138,7 @@ gulp.task( 'fonts', function () {
 
 gulp.task( 'watch', function () {
   if ( !gulp.slurped ) {
-    gulp.watch( './src/'+prepros+'/**/*.'+prepros, [ 'styles' ] );
+    gulp.watch( './src/scss/**/*.scss', [ 'styles' ] );
     gulp.watch( './src/js/**/*.js', [ 'js' ] );
     gulp.watch( './src/pug/**/*.pug', [ 'pug' ] );
     gulp.watch( './src/img/**/*', [ 'images' ] );

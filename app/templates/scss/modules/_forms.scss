@@ -1,0 +1,146 @@
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+// Feel free to change the colours
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea {
+  padding: 0.5em 0.6em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  &:focus {
+    outline: 0;
+    border-color: $focus-color;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+  }
+  &.stacked {
+    display: block;
+    margin: 0.25em 0;
+  }
+}
+
+
+
+input:not([type]) {
+  padding: 0.5em 0.6em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+  &:focus {
+    outline: 0;
+    border-color: $focus-color;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+  }
+  &.stacked {
+    display: block;
+    margin: 0.25em 0;
+  }
+}
+
+
+
+input[type="color"] {
+  padding: 0.2em 0.5em;
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin solid $focus-color;
+  outline: 1px auto $focus-color;
+}
+
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: #eee;
+  /* menu hover bg color */
+  color: #777;
+  /* menu text color */
+  border-color: #ccc;
+}
+
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+  color: darken($input-error, 20%);
+  border-color: $input-error;
+}
+
+input[type="file"]:focus:invalid:focus,
+input[type="radio"]:focus:invalid:focus,
+input[type="checkbox"]:focus:invalid:focus {
+  outline-color: $input-error;
+}
+
+input[type="file"] {
+  &.stacked {
+    display: block;
+    margin: 0.25em 0;
+  }
+}
+
+select {
+  /* Normalizes the height; padding is not sufficient. */
+  height: 2.25em;
+  border: 1px solid #ccc;
+  background-color: white;
+  &.stacked {
+    display: block;
+    margin: 0.25em 0;
+  }
+  &[multiple] {
+    height: auto;
+  }
+}
+
+label {
+  margin: 0.5em 0 0.2em;
+  &.stacked {
+    display: block;
+    margin: 0.25em 0;
+  }
+}
+
+fieldset {
+  margin: 0;
+  padding: 0.35em 0 0.75em;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0.3em 0;
+  margin-bottom: 0.3em;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+
+
+
+

@@ -1,4 +1,50 @@
+// Feel free to change the colours
 .button {
-
+  display: inline-block;
+  zoom: 1;
+  line-height: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0.5em 1em;
+  color: #444;
+  border: 1px solid #999;
+  background-color: #E6E6E6;
+  text-decoration: none;
+  border-radius: 2px;
+  &:hover,
+  &:focus {
+    background-color: #d3d3d3;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.20) inset;
+    border-color: #000\9;
+  }
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    border: none;
+    opacity: 0.40;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  &.primary {
+    // whatever you want
+  }
+  &.secondary {
+    // whatever you want
+  }
 }
 
+.button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}

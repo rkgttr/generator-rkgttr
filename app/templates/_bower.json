@@ -2,8 +2,8 @@
   "name": "<%= slugname %>",
   "version": "<%= version %>",
   "dependencies": {
-  	"modernizr": "~2.8.0",
-  	"jquery": "~1.11.1"
+  	"modernizr": "~2.8.0"<% if (includeJquery) { %>,
+  	"jquery": "~1.11.1"<%}%>
   }
 }
 

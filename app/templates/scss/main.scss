@@ -7,9 +7,9 @@
 /**
  * Base
  */
-@import 'base/base';
 @import 'base/normalize';
 @import 'base/fonts';
+@import 'base/base';
 
 /**
  * Layout
@@ -21,3 +21,5 @@
  * Modules
  */
 @import 'modules/buttons';
+@import 'modules/tables';
+@import 'modules/forms';

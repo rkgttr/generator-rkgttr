@@ -60,6 +60,21 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
         checked: false
       },
       {
+         name: 'Include form elements style overrides',
+         value: 'overrideForm',
+         checked: true
+      },
+      {
+         name: 'Include table elements style overrides',
+         value: 'overrideTable',
+         checked: true
+      },
+      {
+         name: 'Include buttons default styles',
+         value: 'overrideButton',
+         checked: true
+      },
+      {
         name: 'Include jQuery',
         value: 'includeJquery',
         checked: false
@@ -94,6 +109,9 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       this.camelname = this._.camelize( this.slugname );
       this.supportIE8 = hasFeature( 'supportIE8' );
       this.includeJquery = hasFeature( 'includeJquery' );
+      this.overrideForm = hasFeature( 'overrideForm' );
+      this.overrideTable = hasFeature( 'overrideTable' );
+      this.overrideButton = hasFeature( 'overrideButton' );
       this.name = props.name;
       this.title = props.title;
       this.description = props.description;

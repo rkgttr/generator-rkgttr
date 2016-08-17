@@ -57,7 +57,7 @@ will output a 100% width div for mobiles, 50% width div for medium width device,
 We can ommit the mediaqueries and have only one arguments such as @include unit(1/2) {}
  */
 
- */
+
 @mixin unit($base, $mqs...){
   @extend %grid-unit;
   width: $base * 100%;

@@ -1,3 +1,4 @@
+<% if (overrideTable) { %>
 // Feel free to change the colours
 table {
   border-collapse: collapse;
@@ -52,3 +53,4 @@ table {
     }
   }
 }
+<% } %>

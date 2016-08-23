@@ -24,8 +24,11 @@ $button-background-color: #e6e6e6;
 $button-hover-focus-background-color: #d3d3d3;
 <% } %>
 
-// font
+// Typography
 $global-font: sans-serif;
+$min-global-font-size: 14px;
+$max-global-font-size: 20px;
+$global-line-height: 1.5;
 
 
 // breakpoints

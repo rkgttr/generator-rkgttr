@@ -4,8 +4,8 @@ html {
 	background: $white;
 }
 html {
-  line-height:1.5; // 24px at font-size 16px
-  @include fluid-type();
+  line-height: $global-line-height;
+  @include fluid-type($min-global-font-size, $max-global-font-size);
   box-sizing: border-box;
 }
 body {

@@ -3,8 +3,15 @@ html {
 	height: 100%;
 	background: #fff;
 }
+html {
+  line-height:1.5; // 24px at font-size 16px
+  @include fluid-type();
+  box-sizing: border-box;
+}
 .wrapper {
   height: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
 }
 // better default, can be changed to your convenience, comment the lines that you don't want
 * {

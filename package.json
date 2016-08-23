@@ -1,6 +1,6 @@
 {
   "name": "generator-rkgttr",
-  "version": "0.2.14",
+  "version": "0.2.17",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",

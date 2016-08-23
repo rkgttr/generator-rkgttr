@@ -23,7 +23,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log( yosay( 'Welcome to the marvelous Longtail generator!' ) );
+    this.log( yosay( 'Welcome to the marvelous Rkgttr generator!' ) );
 
     var prompts = [ {
       name: 'name',
@@ -50,6 +50,10 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       name: 'author_email',
       message: 'What is your email address?',
       store: true
+    }, {
+      name: 'buildPath',
+      message: 'Path to your build folder (no forward slash at the end please)',
+      default: './build'
     }, {
       type: 'checkbox',
       name: 'features',
@@ -107,6 +111,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       }
       this.slugname = this._.slugify( props.name );
       this.camelname = this._.camelize( this.slugname );
+      this.buildPath = props.buildPath;
       this.supportIE8 = hasFeature( 'supportIE8' );
       this.includeJquery = hasFeature( 'includeJquery' );
       this.overrideForm = hasFeature( 'overrideForm' );
@@ -136,12 +141,12 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       'README.md'
     ];
     this.mkdir( 'src' );
-    this.mkdir( 'build' );
-    this.mkdir( 'build/img' );
-    this.mkdir( 'build/fonts' );
-    this.mkdir( 'build/css' );
-    this.mkdir( 'build/js' );
-    this.mkdir( 'build/js/vendor' );
+    this.mkdir( this.buildPath );
+    this.mkdir( this.buildPath + '/img' );
+    this.mkdir( this.buildPath + '/fonts' );
+    this.mkdir( this.buildPath + '/css' );
+    this.mkdir( this.buildPath + '/js' );
+    this.mkdir( this.buildPath + '/js/vendor' );
     this.mkdir( 'src/img/' );
     this.directory( 'scss', 'src/scss' );
     this.directory( 'favicon', 'src/favicon' );

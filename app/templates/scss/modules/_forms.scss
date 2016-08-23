@@ -18,8 +18,8 @@ select,
 textarea {
   padding: 0.5em 0.6em;
   display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  border: 1px solid $input-border-color;
+  border-radius: $input-border-radius;
   vertical-align: middle;
   box-sizing: border-box;
   &:focus {
@@ -28,8 +28,8 @@ textarea {
   }
   &[disabled] {
     cursor: not-allowed;
-    background-color: #eaeded;
-    color: #cad2d3;
+    background-color: $input-disabled-background-color;
+    color: $input-disabled-color;
   }
   &.stacked {
     display: block;
@@ -42,8 +42,8 @@ textarea {
 input:not([type]) {
   padding: 0.5em 0.6em;
   display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  border: 1px solid $input-border-color;
+  border-radius: $input-border-radius;
   box-sizing: border-box;
   &:focus {
     outline: 0;
@@ -51,8 +51,8 @@ input:not([type]) {
   }
   &[disabled] {
     cursor: not-allowed;
-    background-color: #eaeded;
-    color: #cad2d3;
+    background-color: $input-disabled-background-color;
+    color: $input-disabled-color;
   }
   &.stacked {
     display: block;
@@ -76,11 +76,11 @@ input[type="checkbox"]:focus {
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  background-color: #eee;
+  background-color: $input-readonly-background-color;
   /* menu hover bg color */
-  color: #777;
+  color: $input-readonly-color;
   /* menu text color */
-  border-color: #ccc;
+  border-color: $input-border-color;
 }
 
 input:focus:invalid,
@@ -106,8 +106,8 @@ input[type="file"] {
 select {
   /* Normalizes the height; padding is not sufficient. */
   height: 2.25em;
-  border: 1px solid #ccc;
-  background-color: white;
+  border: 1px solid $input-border-color;
+  background-color: $white;
   &.stacked {
     display: block;
     margin: 0.25em 0;
@@ -136,8 +136,8 @@ legend {
   width: 100%;
   padding: 0.3em 0;
   margin-bottom: 0.3em;
-  color: #333;
-  border-bottom: 1px solid #e5e5e5;
+  color: $legend-color;
+  border-bottom: 1px solid $legend-border-bottom-color;
 }<%}%>
 
 

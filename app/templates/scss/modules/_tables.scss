@@ -4,39 +4,46 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   empty-cells: show;
-  border: 1px solid #cbcbcb;
+  border: 1px solid $table-border-color;
   caption {
-    color: #000;
+    color: $black;
     padding: 1em 0;
     text-align: center;
   }
   td,
   th {
-    border-left: 1px solid #cbcbcb;
+    border-left: 1px solid $table-border-color;
     border-width: 0 0 0 1px;
     font-size: inherit;
     margin: 0;
     overflow: visible;
     padding: 0.5em 1em;
+    text-align: left;
+    &.centred {
+      text-align: center;
+    }
+    &.right {
+      text-align: right;
+    }
   }
   td:first-child,
   th:first-child {
     border-left-width: 0;
   }
   thead {
-    background-color: #e0e0e0;
-    color: #000;
+    background-color: $thead-background-color;
+    color: $black;
     text-align: left;
     vertical-align: bottom;
   }
   &.table-striped {
     tr:nth-child(2n-1) td {
-      background-color: #f2f2f2;
+      background-color: $tr-striped-odd-background-color;
     }
   }
   &.table-bordered {
     td {
-      border-bottom: 1px solid #cbcbcb;
+      border-bottom: 1px solid $table-border-color;
     }
     tbody > tr:last-child > td {
       border-bottom-width: 0;
@@ -46,7 +53,7 @@ table {
     td,
     th {
       border-width: 0 0 1px 0;
-      border-bottom: 1px solid #cbcbcb;
+      border-bottom: 1px solid $table-border-color;
     }
     tbody > tr:last-child > td {
       border-bottom-width: 0;

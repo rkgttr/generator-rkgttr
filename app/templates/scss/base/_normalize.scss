@@ -1,13 +1,6 @@
 /* ==========================================================================
    Normalize.scss settings
    ========================================================================== */
-/**
- * Includes legacy browser support IE6/7
- *
- * Set to false if you want to drop support for IE6 and IE7
- */
-
-$legacy_browser_support: false !default;
 
 /* Base
    ========================================================================== */
@@ -16,17 +9,13 @@ $legacy_browser_support: false !default;
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
- * 3. Corrects text resizing oddly in IE 6/7 when body `font-size` is set using
  *  `em` units.
  */
 
 html {
-  font-family: sans-serif; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  @if $legacy_browser_support {
-    *font-size: 100%; /* 3 */
-  }
+  font-family: sans-serif; 
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; 
 }
 
 /**
@@ -64,20 +53,19 @@ summary {
 }
 
 /**
- * 1. Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
- * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ * Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
 
 audio,
 canvas,
 progress,
 video {
-  display: inline-block; /* 1 */
-  vertical-align: baseline; /* 2 */
-  @if $legacy_browser_support {
-    *display: inline;
-    *zoom: 1;
-  }
+  display: inline-block; 
+  vertical-align: baseline;
+  <% if (supportIE8) { %>
+  *display: inline;
+  zoom: 1;
+  <% } %>
 }
 
 /**
@@ -142,12 +130,6 @@ strong {
   font-weight: bold;
 }
 
-@if $legacy_browser_support {
-  blockquote {
-    margin: 1em 40px;
-  }
-}
-
 /**
  * Address styling not present in Safari and Chrome.
  */
@@ -156,42 +138,6 @@ dfn {
   font-style: italic;
 }
 
-/**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari, and Chrome.
- */
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-@if $legacy_browser_support {
-  h2 {
-    font-size: 1.5em;
-    margin: 0.83em 0;
-  }
-
-  h3 {
-    font-size: 1.17em;
-    margin: 1em 0;
-  }
-
-  h4 {
-    font-size: 1em;
-    margin: 1.33em 0;
-  }
-
-  h5 {
-    font-size: 0.83em;
-    margin: 1.67em 0;
-  }
-
-  h6 {
-    font-size: 0.67em;
-    margin: 2.33em 0;
-  }
-}
 
 /**
  * Addresses styling not present in IE 8/9.
@@ -200,36 +146,6 @@ h1 {
 mark {
   background: #ff0;
   color: #000;
-}
-
-@if $legacy_browser_support {
-
-  /**
-   * Addresses margins set differently in IE 6/7.
-   */
-
-  p,
-  pre {
-    *margin: 1em 0;
-  }
-
-  /*
-   * Addresses CSS quotes not supported in IE 6/7.
-   */
-
-  q {
-    *quotes: none;
-  }
-
-  /*
-   * Addresses `quotes` property not supported in Safari 4.
-   */
-
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
 }
 
 /**
@@ -260,49 +176,6 @@ sub {
   bottom: -0.25em;
 }
 
-@if $legacy_browser_support {
-
-  /* ==========================================================================
-     Lists
-     ========================================================================== */
-
-  /*
-   * Addresses margins set differently in IE 6/7.
-   */
-
-  dl,
-  menu,
-  ol,
-  ul {
-    *margin: 1em 0;
-  }
-
-  dd {
-    *margin: 0 0 0 40px;
-  }
-
-  /*
-   * Addresses paddings set differently in IE 6/7.
-   */
-
-  menu,
-  ol,
-  ul {
-    *padding: 0 0 0 40px;
-  }
-
-  /*
-   * Corrects list images handled incorrectly in IE 7.
-   */
-
-  nav ul,
-  nav ol {
-    *list-style: none;
-    *list-style-image: none;
-  }
-
-}
-
 /* Embedded content
    ========================================================================== */
 
@@ -313,9 +186,6 @@ sub {
 
 img {
   border: 0;
-  @if $legacy_browser_support {
-    *-ms-interpolation-mode: bicubic; /* 2 */
-  }
 }
 
 /**
@@ -356,7 +226,6 @@ pre {
 
 /**
  * Address odd `em`-unit font size rendering in all browsers.
- * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
  */
 
 code,
@@ -364,9 +233,6 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  @if $legacy_browser_support {
-    _font-family: 'courier new', monospace;
-  }
   font-size: 1em;
 }
 
@@ -394,10 +260,6 @@ textarea {
   color: inherit; /* 1 */
   font: inherit; /* 2 */
   margin: 0; /* 3 */
-  @if $legacy_browser_support {
-    vertical-align: baseline; /* 3 */
-    *vertical-align: middle; /* 3 */
-  }
 }
 
 /**
@@ -436,9 +298,6 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button; /* 2 */
   cursor: pointer; /* 3 */
-  @if $legacy_browser_support {
-    *overflow: visible;  /* 4 */
-  }
 }
 
 /**
@@ -472,17 +331,12 @@ input {
 /**
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
- *  Known issue: excess padding remains in IE 6.
  */
 
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
-  @if $legacy_browser_support {
-    *height: 13px; /* 3 */
-    *width: 13px; /* 3 */
-  }
 }
 
 /**
@@ -531,16 +385,11 @@ fieldset {
  * 1. Correct `color` not being inherited in IE 8/9/10/11.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  * 3. Corrects text not wrapping in Firefox 3.
- * 4. Corrects alignment displayed oddly in IE 6/7.
  */
 
 legend {
   border: 0; /* 1 */
   padding: 0; /* 2 */
-  @if $legacy_browser_support {
-    white-space: normal; /* 3 */
-    *margin-left: -7px; /* 4 */
-  }
 }
 
 /**

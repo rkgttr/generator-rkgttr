@@ -1,6 +1,28 @@
 // colours
+$black: #202020;
+$white: #fefefe;
+<% if (overrideForm) { %>
 $focus-color: #129FEA;
 $input-error: #e9322d;
+$input-border-color: #ccc;
+$input-disabled-background-color: #eaeded;
+$input-disabled-color: #cad2d3;
+$input-readonly-background-color: #eee;
+$input-readonly-color: #777;
+$legend-color: #333;
+$legend-border-bottom-color: #e5e5e5;
+<% } %>
+<% if (overrideTable) { %>
+$table-border-color: #cbcbcb;
+$thead-background-color: ##e0e0e0;
+$tr-striped-odd-background-color: #f2f2f2;
+<% } %>
+<% if (overrideButton) { %>
+$button-color: #444;
+$button-border-color: #999;
+$button-background-color: #e6e6e6;
+$button-hover-focus-background-color: #d3d3d3;
+<% } %>
 
 // font
 $global-font: sans-serif;
@@ -12,3 +34,13 @@ $large: 'only screen and (min-width:64em)';
 
 // max width of content: 
 $max-width: 1200px;
+
+
+<% if (overrideForm) { %>
+// forms
+$input-border-radius: 2px;
+<% } %>
+<% if (overrideButton) { %>
+// buttons
+$button-border-radius: 2px;
+<% } %>

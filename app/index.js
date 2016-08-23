@@ -52,7 +52,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       store: true
     }, {
       name: 'buildPath',
-      message: 'Path to your build folder (no forward slash at the end please)',
+      message: 'Path to your build folder (no forward slash at the end please, cannot be outside of your root directory)',
       default: './build'
     }, {
       type: 'checkbox',
@@ -135,6 +135,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       '_package.json',
       '_bower.json',
       'gulpfile.js',
+      'gulp-cfg.js',
       'babelrc',
       'launch.command',
       'launch.bat',
@@ -171,6 +172,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
 
   projectfiles: function () {
     this.copy( 'gulpfile.js' );
+    this.copy( 'gulp-cfg.js' );
     this.copy( 'README.md', 'README.md' );
 
   }

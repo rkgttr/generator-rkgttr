@@ -16,7 +16,7 @@ var gulp = require( 'gulp' ),
   gulpCopy = require( 'gulp-file-copy' ),
   pug = require( 'gulp-pug' ),
   pkg = require('./package.json'),
-  buildDir = require('./gulp-cfg.js').buildDir,
+  buildDir = require('./gulp-cfg.js')().buildDir,
   newer = require('gulp-newer'),
   addsrc = require('gulp-add-src');
 

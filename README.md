@@ -5,7 +5,7 @@ This guide will help you through the process of setting up static frontend proje
 * A convenient folder structure.
 * An optional set of [pug](http://pug-lang.com/) templates based on HTML5 Boilerplate to generate your pages.
 * Several [SCSS](http://sass-lang.com/) files that compile in a single autoprefixed minified CSS files.
-* [jQuery](https://jquery.org/) and a few JavaScript helpers that compile in a single minified JavaScript file (optional).
+* [jQuery](https://jquery.org/)(optional) and a few JavaScript helpers that compile in a single minified JavaScript file.
 * An image minifier.
 * A simple webserver that reloads automatically when you make changes.
 * A [Gulp](http://gulpjs.com/) observer that automatically compile your changes on SCSS/Pug/JavaScript files.
@@ -15,11 +15,6 @@ For editing code, I suggest that you use [Sublime Text](http://www.sublimetext.c
 ## Global Configuration
 
 **The following needs to be done once.**
-
-[Install GIT](http://git-scm.com/downloads)  
-
-Important for Windows users, you must install msysgit correctly. Be sure to check the option shown below:  
-![](http://demo.longtail.com.au/frontend/img/build/mysgit.png)
 
 [Install NodeJs](http://nodejs.org/)
 
@@ -53,7 +48,7 @@ And press Enter
 
 **The following needs to be done per project.**
 
-Create a new repository on your Git service that has the name of your project, or if it has already been created by the backend team, clone it on your hard drive. 
+Create a new folder. 
 
 Move into this folder then `shift + right click` and select "Open command window here", on Mac open a Terminal and move to this folder (`cd \[your-path\]`) or go to `System Preferences \> Keyboard \> Keyboard Shortcuts \> Services` and enable `New Terminal at Folder` and the service will appear by `right click` or `Control + click` on the folder.
 
@@ -69,34 +64,11 @@ When all this is done, all your templates files will be under your project folde
 
 Open [http://localhost:8080/](http://localhost:8080/) to see this in action.
 
-## Versioning on GIT
-
-Only the source files will be committed on GIT. This includes your `src/` folder, and all files that are needed to compile the source files such as the `gulpfile`, … A `.gitignore` file is included in the project that does all the good things for you.
-
-To commit your frontend resources, into the console/terminal move to your project folder then you first need to add your new files:
-
-    git add *
-
-Then you need to commit your job:
-
-    git commit --all
-
-Adding a commit message at this stage is mandatory.
-When you’re happy with your commit, and when you’re done working, you need to push your commit(s) on GIT:
-
-    git push origin master
-
-Please note that the `master` in the above command refers to the branch on which you push your commit(s). Depending on the [GIT workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/) you’re using, you may want to push your commit(s) on another branch.
-
-To learn more about GIT, [here there are nice tutorials for your to read](https://www.atlassian.com/git/tutorials).
-
 ## Start Working
 
 **Following are a few things to keep in mind when you work on your project:**
 
 Don't forget to launch `launch` (or to manually launch the `gulp` command into your console/terminal) before working on your project.
-
-Open [http://localhost:3000/](http://localhost:3000/).
 
 There are two main folders in your folder: `build/` and `src/`. `build/` contains the compiled, concatenated and minified files you will deploy. You should never work into the `build` folder, if you do, you'll suffer immeasurable pain and die miserably. `src/` contains your working files, work here, and only here. 
 Save your pug templates into the `src/pug folder`, and all your included Pug templates into the `src/pug/includes` folder. All generated HTML files will end up in the `build/` folder.

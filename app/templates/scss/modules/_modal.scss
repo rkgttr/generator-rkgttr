@@ -1,0 +1,78 @@
+<% if (includeModal) { %>
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  @media #{$medium} {
+    width: 80%;
+    height: 80%;
+  }
+  margin: auto;
+  background: $modal-background;
+  border-radius: $modal-border-radius;
+  z-index: 100001;
+  animation: modal-fade-in .4s ease forwards;
+  &.modal-fade-out {
+    animation: modal-fade-out .4s ease forwards;
+  }
+  &-open {
+    overflow: hidden;
+  }
+  &-overlay {
+    z-index: 100000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $modal-overlay-background;
+    animation: overlay-fade-in .4s ease forwards;
+    &.modal-overlay-fade-out {
+      animation: overlay-fade-out .4s ease forwards;
+    }
+  }
+  &-wrapper {
+    overflow: auto;
+    height: 100%;
+    box-shadow: 0 10px 30px $modal-shadow-color;
+  }
+  &-content {
+    &-src {
+      display: none;
+    }
+  }
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+@keyframes modal-fade-in {
+  from {
+    transform: translateY(-25%);
+    opacity: 0;
+  }
+}
+@keyframes modal-fade-out {
+  to {
+    transform: translateY(-25%);
+    opacity: 0;
+  }
+}
+
+@keyframes overlay-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes overlay-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+<% } %>

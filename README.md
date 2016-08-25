@@ -148,5 +148,50 @@ So in short, the first arguments is the base width of you grid unit, which will 
 
 Remember when adding a file, you must also add it to `main.scss`.
 
+### Using JavaScript
+
+If you choose to not use jQuery, there are several helpers and polyfills that will be included in the project (in `src/js/plugins.js`). The polyfills are for [`matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches), [`mutationobserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver), and [`weakmap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
+
+#### Helper modules
+
+##### Q
+
+Q is a module that consists of shortcuts to select DOM elements. For example instead of typing `document.querySelectorAll('selector')` you just have to type `Q.all('selector')`. Following is the list of Q methods:
+
+ * `one`: shortcut for `document.querySelector`
+ * `all`: shortcut for `document.querySelectorAll`
+ * `id`: shortcut for `document.getElementById`
+ * `class`: shortcut for `document.getElementsByClassName`
+ * `tag`: shortcut for `document.getElementsByTagName`
+
+ ##### Helpers
+
+Helpers is a module that consists of useless methods:
+
+* `typeOf`: takes one arguments that can be a JavaScript primitive or a JavaScript object and return its type. For example `Helpers.typeOf('hello')` returns `String`.
+* `delegate`: allows for event delegation. Useful to add event listeners on DOM elements that might not exist yet at the time of the event registration. Example: `document.addEventListener('click', delegate('.selector', e => console.log(e.delegateTarget))`.
+
+#### Modal module
+
+If you choose to include the modal module, then you'll get some JavaScript and SCSS to create simple accessible modals.
+Create a modal this way:
+
+    let modal = new Modal();
+    modal.open('Hello world');
 
 
+
+##### Modal methods
+
+* Constructor: `new Modal([DOM element on which the modal is created, default to document.body], [options, Object])`
+    * Options:
+        * `overlayClassName`: Default to `modal-overlay`
+        * `modalClassName`: Default to `modal`
+        * `wrapperClassName`: Default to `modal-wrapper`
+        * `contentClassName`: Default to `modal-content`
+        * `closeButtonClassName`: Default to `modal-close`
+* `open`: open the modal, takes 2 parameters:
+    * `content`: a string representing the content you want to inject in your modal. It can be a simple string or complex HTML markup. You can pick the inner HTML of existing DOM elements to populate the content of your modal. To keep these DOM elements hidden while the modal is closed, apply the `.modal-content-src` CSS class to them.
+    * `callback` (optional): a method you want to invoke when opening a modal.
+* `update`: update the content of the modal, takes one parameter, a string.
+* `close`: close the modal, take one optional parameter, a callback invoked on the modal closing.

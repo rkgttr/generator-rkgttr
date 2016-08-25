@@ -79,6 +79,11 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
          checked: true
       },
       {
+        name: 'Include simple modal module',
+        value: 'includeModal',
+        checked: false
+      },
+      {
         name: 'Include jQuery',
         value: 'includeJquery',
         checked: false
@@ -114,6 +119,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       this.buildPath = props.buildPath;
       this.supportIE8 = hasFeature( 'supportIE8' );
       this.includeJquery = hasFeature( 'includeJquery' );
+      this.includeModal = hasFeature( 'includeModal' );
       this.overrideForm = hasFeature( 'overrideForm' );
       this.overrideTable = hasFeature( 'overrideTable' );
       this.overrideButton = hasFeature( 'overrideButton' );

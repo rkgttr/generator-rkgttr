@@ -84,6 +84,11 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
         checked: false
       },
       {
+        name: 'Include tooltips system module',
+        value: 'includeTooltip',
+        checked: false
+      },
+      {
         name: 'Include jQuery',
         value: 'includeJquery',
         checked: false
@@ -120,6 +125,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       this.supportIE8 = hasFeature( 'supportIE8' );
       this.includeJquery = hasFeature( 'includeJquery' );
       this.includeModal = hasFeature( 'includeModal' );
+      this.includeTooltip = hasFeature( 'includeTooltip' );
       this.overrideForm = hasFeature( 'overrideForm' );
       this.overrideTable = hasFeature( 'overrideTable' );
       this.overrideButton = hasFeature( 'overrideButton' );

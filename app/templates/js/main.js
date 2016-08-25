@@ -34,6 +34,7 @@ class App_<%= camelname %> {
   init () {
     if(!this.INITED) {
       this.INITED = true;
+      <% if(includeTooltip){  %>Tooltip.init();<% } %>
       this.addListeners();
     }
   }

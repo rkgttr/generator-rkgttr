@@ -28,6 +28,11 @@ $modal-overlay-background: rgba($black, .5);
 $modal-background: #fefefe;
 $modal-shadow-color: rgba($black, .75);
 <% } %>  
+<% if(includeTooltip) %>
+$tooltip-color: #444;
+$tooltip-background-color: #666;
+$tooltip-content-color: #fff;
+<% } %>
 // Typography
 $global-font: sans-serif;
 $min-global-font-size: 14px;
@@ -54,4 +59,8 @@ $button-border-radius: 2px;
 <% if (includeModal) { %>
 // modal
 $modal-border-radius: 2px;
+<% } %>  
+<% if (includeTooltip) { %>
+// tooltip
+$tooltip-border-radius: 2px;
 <% } %>  

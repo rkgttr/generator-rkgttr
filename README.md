@@ -196,3 +196,24 @@ Create a modal this way:
 * `update`: update the content of the modal, takes one parameter, a string.
 * `close`: close the modal, take one optional parameter, a callback invoked on the modal closing.
 * `teardown`: garbage collection of the modal.
+
+#### Tooltip module
+
+If you choose to include the tooltip system module, then you'll get some JavaScript and SCSS to create tooltips. In HTML, a text that has a tooltip on rollover will be written this way:
+
+    Text that contain a <span class="tooltip tooltip-top" data-tooltip="Tooltip content">tooltip</span>.
+
+You can align your tooltip differently by replacing the `tooltip-top` class by `tooltip-bottom`, `tooltip-left`, or `tooltip-right`.
+
+##### Dynamic content
+
+Be aware that is you load content with Ajax that contains tooltips, you will need to initialise these new tooltips in your Ajax success handler like this:
+
+    Tooltip.init();
+
+You can skip the initialisation step by having your tooltips markup like this:
+
+    <span class="tooltip tooltip-top">tooltip
+        <div class="tooltip-text">Tooltip content</div>
+    </span>
+

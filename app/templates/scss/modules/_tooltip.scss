@@ -1,0 +1,88 @@
+<% if (includeTooltip) { %>
+.tooltip {
+  cursor: pointer;
+  color: $tooltip-color;
+  &:hover {
+    .tooltip-text {
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
+  &.tooltip {
+    &-top {
+      .tooltip-text{
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        transform-origin: 50% 102%;
+        &:after {
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-color: $tooltip-background-color transparent transparent transparent;
+        }
+      }
+    }
+    &-bottom {
+      .tooltip-text{
+        top: 135%;
+        left: 50%;
+        margin-left: -60px;
+        transform-origin: 50% -2%;
+        &:after {
+          bottom: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-color: transparent transparent $tooltip-background-color transparent;
+        }
+      }
+    }
+    &-right {
+      .tooltip-text{
+        top: -5px;
+        left: 125%;
+        transform-origin: -2% 50%;
+        &:after {
+          top: 50%;
+          right: 100%;
+          margin-top: -5px;
+          border-color: transparent $tooltip-background-color transparent transparent;
+        }
+      }
+    }
+    &-left {
+      .tooltip-text{
+        top: -5px;
+        right: 128%;
+        transform-origin: 102% 50%;
+        &:after {
+          top: 50%;
+          left: 100%;
+          margin-top: -5px;
+          border-color: transparent transparent transparent $tooltip-background-color;
+        }
+      }
+    }
+  }
+  &-text {
+    visibility: hidden;
+    position: absolute;
+    width: 120px;
+    background-color: $tooltip-background-color;
+    color: $tooltip-content-color;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: .85em;
+    border-radius: $tooltip-border-radius;
+    z-index: 10000;
+    transform: scale(0);
+    transition: transform .2s cubic-bezier(.34,.54,.86,1.19);
+    &:after {
+      content: "";
+      position: absolute;
+      border-width: 5px;
+      border-style: solid;
+    }
+  }
+}
+<% } %>

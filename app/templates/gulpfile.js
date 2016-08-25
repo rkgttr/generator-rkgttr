@@ -44,7 +44,7 @@ gulp.task( 'browser-sync', function () {
 } );
 
 gulp.task( 'js', function () {
-  gulp.src( [ './src/js/plugins.js', <% if (includeModal) { %>'./src/js/modal.js', <% } %>'./src/js/main.js' ] )
+  gulp.src( [ './src/js/plugins.js', <% if (includeModal) { %>'./src/js/modal.js', <% } %><% if (includeTooltip) { %>'./src/js/tooltip.js', <% } %>'./src/js/main.js' ] )
     .pipe(plumber())
     .pipe( concat( 'global.min.js' ) )
     .pipe( babel() )<% if (includeJquery) { %>

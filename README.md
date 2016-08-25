@@ -195,3 +195,4 @@ Create a modal this way:
     * `callback` (optional): a method you want to invoke when opening a modal.
 * `update`: update the content of the modal, takes one parameter, a string.
 * `close`: close the modal, take one optional parameter, a callback invoked on the modal closing.
+* `teardown`: garbage collection of the modal.

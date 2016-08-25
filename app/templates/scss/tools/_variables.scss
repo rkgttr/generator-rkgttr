@@ -22,7 +22,8 @@ $button-color: #444;
 $button-border-color: #999;
 $button-background-color: #e6e6e6;
 $button-hover-focus-background-color: #d3d3d3;
-<% } %><% if (includeModal) { %>
+<% } %>
+<% if (includeModal) { %>
 $modal-overlay-background: rgba($black, .5);
 $modal-background: #fefefe;
 $modal-shadow-color: rgba($black, .75);
@@ -50,7 +51,7 @@ $input-border-radius: 2px;
 // buttons
 $button-border-radius: 2px;
 <% } %>
-<% } %><% if (includeModal) { %>
+<% if (includeModal) { %>
 // modal
 $modal-border-radius: 2px;
 <% } %>  

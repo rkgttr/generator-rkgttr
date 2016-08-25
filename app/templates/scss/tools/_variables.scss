@@ -28,7 +28,7 @@ $modal-overlay-background: rgba($black, .5);
 $modal-background: #fefefe;
 $modal-shadow-color: rgba($black, .75);
 <% } %>  
-<% if(includeTooltip) %>
+<% if(includeTooltip) {%>
 $tooltip-color: #444;
 $tooltip-background-color: #666;
 $tooltip-content-color: #fff;

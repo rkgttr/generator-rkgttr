@@ -217,3 +217,34 @@ You can skip the initialisation step by having your tooltips markup like this:
         <div class="tooltip-text">Tooltip content</div>
     </span>
 
+#### Router module
+
+If you choose to include the router module, then you'll get a JavaScript module to handle routes in your application. Routes lets you easily dispatch based on url-style strings. It's particularly useful for one page website applications, to switch from one state to another based on the URL hash changes, which allows you to store your application state into the browser history, and to use deep linking functionalities:
+
+    let router = new Router(()=> defaultBehaviour());
+    router.addRoute('/route/:dynamic-prop/path/:other-prop', (dynProp, otherProp) => doSomething(dynProp, otherProp));
+
+For example, imagine you have a link in your page:
+
+    <a href="#/product/23">My awesome product</a>
+
+And in your JavaScript:
+
+    let router = new Router(()=> showHomePage());
+    router.addRoute('/product/:product-id', (pid) => showProductById(pid));
+
+Then on click on the link, the `showProductById` method will be called, with the product id as argument.
+You also can invoke a navigation event straight from JavaScript like this:
+
+    history.pushState(null, null, '#/product/1523');
+
+
+##### Router methods
+
+* Constructor: `new Router([function to handle the case when no route is provided or a route that is not registered is provided])`
+* `addRoute`: add a route, takes 2 parameters:
+    * `route`: a string representing the URL hash of the route.
+    * `callback`: a method you want to invoke when the URL hash changes to this route.
+* `addRoutes`: takes an undefinite quantities of route objects that contains two properties `{route:'', handler:()=>}`:
+    * `route`: a string representing the URL hash of the route.
+    * `handler`: a method you want to invoke when the URL hash changes to this route.

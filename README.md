@@ -1,6 +1,6 @@
 # RKGTTR Frontend Setup
 
-This guide will help you through the process of setting up static frontend projects. This is a simple framework based on [NodeJS](http://nodejs.org/), [Yeoman](http://yeoman.io/), [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/) that automate a lot of tasks such as preprocessing your files and minify them. The framework includes:
+This Yeoman generator will help you through the process of setting up static frontend projects. It scaffolds a simple framework using [NodeJS](http://nodejs.org/), [Yeoman](http://yeoman.io/), [Bower](http://bower.io/), [Yarn](https://yarnpkg.com) and [Gulp](http://gulpjs.com/), that automates a lot of tasks such as preprocessing your files and minify them. The framework includes:
 
 * A convenient folder structure.
 * An optional set of [pug](http://pug-lang.com/) templates based on HTML5 Boilerplate to generate your pages.
@@ -29,6 +29,12 @@ Install Gulp by entering the following command:
 Install Bower by entering the following command:
 
     npm install -g bower
+
+ And press Enter
+
+Install Yarn by entering the following command:
+
+    npm install -g yarn
 
  And press Enter
 
@@ -61,6 +67,8 @@ Press Enter and answer the few questions about the project name, description and
 When all this is done, all your templates files will be under your project folder, here you will find one .bat file (or .command file on Mac): `launch`
 
 `launch` first compiles all your files (js + scss, etc.), launches a web server, watches any changes you make to re-compile on the fly, and finally refreshes the server.
+
+Alternatively, type `gulp` in your console.
 
 Open [http://localhost:8080/](http://localhost:8080/) to see this in action.
 

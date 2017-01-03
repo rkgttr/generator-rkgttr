@@ -1,9 +1,5 @@
 {
-  "name": "<%= slugname %>",
-  "version": "<%= version %>",
-  "dependencies": {
-  	"modernizr": "~2.8.0"<% if (includeJquery) { %>,
-  	"jquery": "~1.11.1"<%}%>
-  }
+  "name": "test",
+  "version": "0.1.0",
+  "dependencies": {}
 }
-

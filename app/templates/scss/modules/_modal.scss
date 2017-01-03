@@ -1,54 +1,106 @@
-<% if (includeModal) { %>
+<% if(includeModal){ %>
 .modal {
+  display: none;
+  z-index: 100000;
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  width: 90%;
-  height: 90%;
-  @media #{$medium} {
-    width: 80%;
-    height: 80%;
+  &:focus {
+    .modal-content {
+      border: 1px solid $focus-color;
+    }
   }
-  margin: auto;
-  background: $modal-background;
-  border-radius: $modal-border-radius;
-  z-index: 100001;
-  animation: modal-fade-in .4s ease forwards;
-  &.modal-fade-out {
-    animation: modal-fade-out .4s ease forwards;
-  }
-  &-open {
-    overflow: hidden;
-  }
-  &-overlay {
-    z-index: 100000;
-    position: fixed;
+  &:before {
+    position: absolute;
     top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
-    left: 0;
-    background: $modal-overlay-background;
-    animation: overlay-fade-in .4s ease forwards;
-    &.modal-overlay-fade-out {
-      animation: overlay-fade-out .4s ease forwards;
+    background-color:$modal-overlay-background;
+    content: '';
+    display: block;
+  }
+  &:target {
+    display: block;
+    &:before {
+      animation: overlay-fade-in .3s ease forwards;
+    }
+    .modal-wrapper {
+      animation: modal-fade-in .3s ease forwards;
+    }
+  }
+  &-closing {
+    display: block;
+    &:before {
+      animation: overlay-fade-out .3s ease forwards;
+    }
+    .modal-wrapper {
+      animation: modal-fade-out .3s ease forwards;
     }
   }
   &-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: auto;
-    height: 100%;
-    box-shadow: 0 10px 30px $modal-shadow-color;
+    padding: 3rem;
   }
   &-content {
-    &-src {
-      display: none;
-    }
+    background-color:$modal-background;
+    min-height: 100%;
+    width: 100%;
+    box-shadow: 0 0 1rem $modal-shadow-color;
+    border-radius: $modal-border-radius;
+    padding: 3rem;
   }
   &-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 4rem;
+    right: 4rem;
+    height: 3rem;
+    width: 3rem;
+    overflow: hidden;
+    text-indent: 120%;
+    white-space: nowrap;
+    color: rgba($black, 0);
+    text-align: center;
+    line-height: 3rem;
+    &:before,
+    &:after {
+      position: absolute;
+      content: '';
+      height: 1px;
+      width: 2rem;
+      border-left: 1rem solid $black;
+      border-right: 1rem solid $black;
+      left: 0;
+      top: 50%;
+      transition: transform .25s ease, border-left-width .25s ease, border-right-width .25s ease;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+    &:hover {
+      &:before {
+        transform: rotate(315deg);
+        //border-left-width: .75rem;
+      }
+      &:after {
+        transform: rotate(45deg);
+        border-left-width: .8rem;
+        border-right-width: .95rem;
+      }
+    }
+  }
+  &-opened {
+    overflow: hidden;
   }
 }
 

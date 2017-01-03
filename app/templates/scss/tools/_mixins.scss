@@ -33,10 +33,7 @@
 
 %grid-row {
   letter-spacing: -0.31em;
-  <% if (supportIE8) { %>
-  *letter-spacing: normal;
-  *word-spacing: -0.43em;
-  <% } %>
+  
   text-rendering: optimizespeed;
   font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
   display: flex;
@@ -48,11 +45,7 @@
 %grid-unit {
   display: inline-block;
   letter-spacing: normal;
-  <% if (supportIE8) { %>
-  *display: inline;
-  zoom: 1;
-  word-spacing: normal;
-  <% } %>
+  
   vertical-align: top;
   text-rendering: auto;
   font-family: $global-font;

@@ -1,4 +1,4 @@
-<% if (overrideTable) { %>
+<% if (overrideTable){ %>
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -59,4 +59,5 @@ table {
     }
   }
 }
+
 <% } %>

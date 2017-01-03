@@ -1,4 +1,29 @@
-'use strict';
+<% if (includeRouter){ %> import Router from 'Router';<% } %>
+<% if (includeModal){ %> import Modal from 'Modal';<% } %>
+
+<% if (includeJquery){ %> import 'jquery';<% } %>
+import * as Q from 'Q';
+import * as Helpers from 'Helpers';
+
+
+// uncomment following line if script fails in Internet Explorer, or other
+// import 'babel-polyfill';
+
+// uncomment following line if you need to polyfill Element.matches, for IE support and prefixed matches
+// import 'MatchesPolyfill';
+ 
+// uncomment following line if you need to polyfill WeakMap, for IE support, useless if you include babel-polyfill
+// import 'WeakMapPolyfill';
+
+// uncomment following line if you need to polyfill Element.classList, for IE9 support
+// import 'ClassListPolyfills;
+
+// uncomment following line if you need to polyfill Console, for IE9 support
+// import 'ConsolePolyfills';
+
+// uncomment following line if you need to polyfill MutationObserver, for IE10 support
+// import 'MutationObserverPolyfill';
+
 
 /**
  *
@@ -34,7 +59,8 @@ class App_<%= camelname %> {
   init () {
     if(!this.INITED) {
       this.INITED = true;
-      <% if(includeTooltip){  %>Tooltip.init();<% } %>
+      <% if (includeModal){ %> Modal();<% } %>
+      <% if (includeRouter){ %>let router = new Router();<% } %>
       this.addListeners();
     }
   }

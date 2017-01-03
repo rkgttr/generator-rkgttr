@@ -1,4 +1,4 @@
-<% if (overrideForm) { %>
+<% if (overrideForm){ %>
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -137,9 +137,9 @@ legend {
   margin-bottom: 0.3em;
   color: $legend-color;
   border-bottom: 1px solid $legend-border-bottom-color;
-}<%}%>
+}
 
-
+<% } %>
 
 
 

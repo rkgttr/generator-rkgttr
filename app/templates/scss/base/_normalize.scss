@@ -62,10 +62,7 @@ progress,
 video {
   display: inline-block; 
   vertical-align: baseline;
-  <% if (supportIE8) { %>
-  *display: inline;
-  zoom: 1;
-  <% } %>
+  
 }
 
 /**

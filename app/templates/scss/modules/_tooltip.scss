@@ -2,27 +2,14 @@
 .tooltip {
   cursor: pointer;
   color: $tooltip-color;
+  &:focus,
   &:hover {
     .tooltip-text {
-      visibility: visible;
       transform: scale(1);
     }
   }
   &.tooltip {
-    &-top {
-      .tooltip-text{
-        bottom: 125%;
-        left: 50%;
-        margin-left: -60px;
-        transform-origin: 50% 102%;
-        &:after {
-          top: 100%;
-          left: 50%;
-          margin-left: -5px;
-          border-color: $tooltip-background-color transparent transparent transparent;
-        }
-      }
-    }
+    
     &-bottom {
       .tooltip-text{
         top: 135%;
@@ -65,7 +52,7 @@
     }
   }
   &-text {
-    visibility: hidden;
+    // visibility: hidden;
     position: absolute;
     width: 120px;
     background-color: $tooltip-background-color;
@@ -77,6 +64,16 @@
     z-index: 10000;
     transform: scale(0);
     transition: transform .2s cubic-bezier(.34,.54,.86,1.19);
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    transform-origin: 50% 102%;
+    &:after {
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-color: $tooltip-background-color transparent transparent transparent;
+    }
     &:after {
       content: "";
       position: absolute;

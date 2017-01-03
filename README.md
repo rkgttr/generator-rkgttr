@@ -48,7 +48,9 @@ Install the project generator by entering the following command:
 
     npm install -g generator-rkgttr
 
-And press Enter
+If other things fails when installing, or when running the project, look at the log, you might want to install other frameworks and tools such as Python and GIT.
+
+When all done, press Enter
 
 ## Project Configuration
 
@@ -64,11 +66,9 @@ In the console that opens, type:
 
 Press Enter and answer the few questions about the project name, description and version.
 
-When all this is done, all your templates files will be under your project folder, here you will find one .bat file (or .command file on Mac): `launch`
+When all this is done, all your templates files will be under your project folder.
 
-`launch` first compiles all your files (js + scss, etc.), launches a web server, watches any changes you make to re-compile on the fly, and finally refreshes the server.
-
-Alternatively, type `gulp` in your console.
+Type `gulp` in your console to start working.
 
 Open [http://localhost:8080/](http://localhost:8080/) to see this in action.
 
@@ -76,14 +76,12 @@ Open [http://localhost:8080/](http://localhost:8080/) to see this in action.
 
 **Following are a few things to keep in mind when you work on your project:**
 
-Don't forget to launch `launch` (or to manually launch the `gulp` command into your console/terminal) before working on your project.
+Don't forget to launch the `gulp` command before working on your project.
 
 There are two main folders in your folder: `build/` and `src/`. `build/` contains the compiled, concatenated and minified files you will deploy. You should never work into the `build` folder, if you do, you'll suffer immeasurable pain and die miserably. `src/` contains your working files, work here, and only here. 
-Save your pug templates into the `src/pug folder`, and all your included Pug templates into the `src/pug/includes` folder. All generated HTML files will end up in the `build/` folder.
+Save your pug templates into the `src/pug` folder, and all your included Pug templates into the `src/pug/includes` folder. All generated HTML files will end up in the `build/` folder.
 
-Always write your JavaScript into `src/js/main.js`. You can use [ECMAScript 6](https://babeljs.io/) or standard ECMAScript 5. However, don't use any ES6 functionalities that depend on the Babel Polyfill. Your code will be minifed as ES5.
-
-If you use jQuery, add any jQuery plugins or JavaScript helpers into `src/js/plugins.js`.
+Always write your JavaScript into `src/js/main.js`, or create additional modules. You can use [ECMAScript 6](https://babeljs.io/) or standard ECMAScript 5. However, avoid using any ES6 functionalities that depend on the Babel Polyfill, or you'll have to include it by uncommenting the corresponding line in `src/js/main.js`. Your code and modules will be bundled and minifed as ES5.
 
 Don't forget to change your favicon and the IOS and Windows special icons/tiles on the `src/favicon/` folder.
 
@@ -92,7 +90,7 @@ Always put your images into `src/img/`. If you delete an image, it will not be d
 
 ### Using SCSS
 
-The SASS folders are broken up based loosely on the principles outlines in [SMACSS - Scalable and Modular Architecture for CSS](https://smacss.com/) and is intended to be used with a MOBILE FIRST approach.
+The SASS folders are broken up based loosely on the principles outlined in [SMACSS - Scalable and Modular Architecture for CSS](https://smacss.com/) and is intended to be used with a MOBILE FIRST approach.
 
 Base: 
 base.scss - Headings, typography, resets etc.
@@ -158,7 +156,8 @@ Remember when adding a file, you must also add it to `main.scss`.
 
 ### Using JavaScript
 
-If you choose to not use jQuery, there are several helpers and polyfills that will be included in the project (in `src/js/plugins.js`). The polyfills are for [`matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches), [`mutationobserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver), and [`weakmap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
+The JavaScript use the ES6 module syntax. If you want to create additional modules, create them into `src/js/modules` then import them into `src/js/main.js`. You can install traditional NPM modules and import them the same way. But you might want to create some shortcuts to the modules main js file into `gulp/tasks/javascript.js` into the `includePathOptions` object. Look at how `babel-polyfill` is linked to see how it works. Please note that any change into the gulp tasks require that you restart gulp to make them work.
+Several optional polyfills are included in the project. The polyfills are for [`matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches), [`mutationobserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver), [`classList`](https://developer.mozilla.org/fr/docs/Web/API/Element/classList), and [`weakmap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap). Uncomment the related modules in `src/js/main.js`.
 
 #### Helper modules
 
@@ -169,68 +168,48 @@ Q is a module that consists of shortcuts to select DOM elements. For example ins
  * `one`: shortcut for `document.querySelector`
  * `all`: shortcut for `document.querySelectorAll`
  * `id`: shortcut for `document.getElementById`
- * `class`: shortcut for `document.getElementsByClassName`
+ * `classname`: shortcut for `document.getElementsByClassName`
  * `tag`: shortcut for `document.getElementsByTagName`
 
  ##### Helpers
 
 Helpers is a module that consists of useless methods:
 
-* `typeOf`: takes one arguments that can be a JavaScript primitive or a JavaScript object and return its type. For example `Helpers.typeOf('hello')` returns `String`.
+* `getType`: takes one arguments that can be a JavaScript primitive or a JavaScript object and return its type. For example `Helpers.getType('hello')` returns `String`.
 * `delegate`: allows for event delegation. Useful to add event listeners on DOM elements that might not exist yet at the time of the event registration. Example: `document.addEventListener('click', delegate('.selector', e => console.log(e.delegateTarget))`.
+* `whichAnimationEvent`: return the browser prefixed animation event, or `undefined` if not supported.
 
 #### Modal module
 
-If you choose to include the modal module, then you'll get some JavaScript and SCSS to create simple accessible modals.
+If you choose to include the modal module, then you'll get some JavaScript and SCSS to create simple accessible, progressively enhanced modals.
 Create a modal this way:
 
-    let modal = new Modal();
-    modal.open('Hello world');
+    <a href="#modal/test">open modal</a>
+    <div class="modal" id="modal/test">
+      <div class="modal-wrapper">
+        <div class="modal-content">
+          Modal content
+        </div>
+        <a class="modal-close" href="#">Close</a></div>
+    </div>
 
-
-
-##### Modal methods
-
-* Constructor: `new Modal([DOM element on which the modal is created, default to document.body], [options, Object])`
-    * Options:
-        * `overlayClassName`: Default to `modal-overlay`
-        * `modalClassName`: Default to `modal`
-        * `wrapperClassName`: Default to `modal-wrapper`
-        * `contentClassName`: Default to `modal-content`
-        * `closeButtonClassName`: Default to `modal-close`
-* `open`: open the modal, takes 2 parameters:
-    * `content`: a string representing the content you want to inject in your modal. It can be a simple string or complex HTML markup. You can pick the inner HTML of existing DOM elements to populate the content of your modal. To keep these DOM elements hidden while the modal is closed, apply the `.modal-content-src` CSS class to them.
-    * `callback` (optional): a method you want to invoke when opening a modal.
-* `update`: update the content of the modal, takes one parameter, a string.
-* `close`: close the modal, take one optional parameter, a callback invoked on the modal closing.
-* `teardown`: garbage collection of the modal.
+Modals id attributes should start with `modal/` otherwise it wont't work.
 
 #### Tooltip module
 
-If you choose to include the tooltip system module, then you'll get some JavaScript and SCSS to create tooltips. In HTML, a text that has a tooltip on rollover will be written this way:
+If you choose to include the tooltip system module, then you'll get some SCSS to create tooltips. In HTML, a text that has a tooltip on rollover will be written this way:
 
-    Text that contain a <span class="tooltip tooltip-top" data-tooltip="Tooltip content">tooltip</span>.
+    Text that contain a <span class="tooltip tooltip-top">tooltip</span>.
 
 You can align your tooltip differently by replacing the `tooltip-top` class by `tooltip-bottom`, `tooltip-left`, or `tooltip-right`.
 
-##### Dynamic content
-
-Be aware that is you load content with Ajax that contains tooltips, you will need to initialise these new tooltips in your Ajax success handler like this:
-
-    Tooltip.init();
-
-You can skip the initialisation step by having your tooltips markup like this:
-
-    <span class="tooltip tooltip-top">tooltip
-        <div class="tooltip-text">Tooltip content</div>
-    </span>
 
 #### Router module
 
 If you choose to include the router module, then you'll get a JavaScript module to handle routes in your application. Routes lets you easily dispatch based on url-style strings. It's particularly useful for one page website applications, to switch from one state to another based on the URL hash changes, which allows you to store your application state into the browser history, and to use deep linking functionalities:
 
     let router = new Router(()=> defaultBehaviour());
-    router.addRoute('/route/:dynamic-prop/path/:other-prop', (dynProp, otherProp) => doSomething(dynProp, otherProp));
+    router.addRoute('/route/:dynamic-prop/path/:other-prop', (dynProp, otherProp, fullHash) => doSomething(dynProp, otherProp, fullHash));
 
 For example, imagine you have a link in your page:
 
@@ -244,7 +223,7 @@ And in your JavaScript:
 Then on click on the link, the `showProductById` method will be called, with the product id as argument.
 You also can invoke a navigation event straight from JavaScript like this:
 
-    history.pushState(null, null, '#/product/1523');
+    router.callRoute('#/product/1523');
 
 
 ##### Router methods

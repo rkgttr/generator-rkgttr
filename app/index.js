@@ -52,18 +52,10 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       message: 'What is your email address?',
       store: true
     }, {
-      name: 'buildPath',
-      message: 'Path to your build folder (no forward slash at the end please, cannot be outside of your root directory)',
-      default: './build'
-    }, {
       type: 'checkbox',
       name: 'features',
       message: 'What more would you like?',
-      choices: [ {
-        name: 'Support Internet Explorer 8',
-        value: 'supportIE8',
-        checked: false
-      },
+      choices: [ 
       {
          name: 'Include form elements style overrides',
          value: 'overrideForm',
@@ -127,8 +119,6 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       }
       this.slugname = this._.slugify( props.name );
       this.camelname = this._.camelize( this.slugname );
-      this.buildPath = props.buildPath;
-      this.supportIE8 = hasFeature( 'supportIE8' );
       this.includeJquery = hasFeature( 'includeJquery' );
       this.includeModal = hasFeature( 'includeModal' );
       this.includeTooltip = hasFeature( 'includeTooltip' );
@@ -153,24 +143,24 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       '.svn',
       '_package.json',
       '_bower.json',
-      'gulpfile.js',
-      'gulp-cfg.js',
+      'gulpfile.babel.js',
       'babelrc',
       'launch.command',
       'launch.bat',
       'README.md'
     ];
     this.mkdir( 'src' );
-    this.mkdir( this.buildPath );
-    this.mkdir( this.buildPath + '/img' );
-    this.mkdir( this.buildPath + '/fonts' );
-    this.mkdir( this.buildPath + '/css' );
-    this.mkdir( this.buildPath + '/js' );
-    this.mkdir( this.buildPath + '/js/vendor' );
+    this.mkdir( './build' );
+    this.mkdir( './build/img' );
+    this.mkdir( './build/fonts' );
+    this.mkdir( './build/css' );
+    this.mkdir( './build/js' );
+    this.mkdir( './build/js/vendor' );
     this.mkdir( 'src/img/' );
     this.directory( 'scss', 'src/scss' );
     this.directory( 'favicon', 'src/favicon' );
     this.directory( 'js', 'src/js' );
+    this.directory( 'gulp', 'gulp' );
     this.directory( 'pug', 'src/pug' );
     this.expandFiles( '*', {
       cwd: this.sourceRoot(),
@@ -190,8 +180,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
   },
 
   projectfiles: function () {
-    this.copy( 'gulpfile.js' );
-    this.copy( 'gulp-cfg.js' );
+    this.copy( 'gulpfile.babel.js' );
     this.copy( 'README.md', 'README.md' );
 
   }

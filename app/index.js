@@ -151,7 +151,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       '_bower.json',
       'gulpfile.babel.js',
       'babelrc',
-      'README.md'
+      '_README.md'
     ];
     this.mkdir( 'src' );
     this.mkdir( './build' );
@@ -186,7 +186,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
 
   projectfiles: function () {
     this.copy( 'gulpfile.babel.js' );
-    this.copy( 'README.md', 'README.md' );
+    this.copy( '_README.md', 'README.md' );
 
   }
 } );

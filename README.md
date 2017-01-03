@@ -79,7 +79,9 @@ Open [http://localhost:8080/](http://localhost:8080/) to see this in action.
 Don't forget to launch the `gulp` command before working on your project.
 
 There are two main folders in your folder: `build/` and `src/`. `build/` contains the compiled, concatenated and minified files you will deploy. You should never work into the `build` folder, if you do, you'll suffer immeasurable pain and die miserably. `src/` contains your working files, work here, and only here. 
+
 If you choose to use Pug, save your Pug pages contents into the `src/pug/pages` folder, and all your included Pug partials into the `src/pug/includes` folder. All pages will use the `src/pug/layouts/default.pug` layout, if you wish to use additional layouts, create them into `src/pug/layouts/`, and extend these new layouts in your new pages. 
+
 If you prefer a more traditional approach to HTML markup, while keeping the benefits of a templating language, you can choose to use Assemble instead of Pug when you run `yo rkgttr`. Assemble templates files use the same folder structure as Pug's ones, except they will be located under the `src/templates` folder. Assemble uses [Handlebars](http://handlebarsjs.com/) to create dynamic content based on JSON or YAML data. You can use custom Handlebars helpers to do advanced data handling, and for this, please refer to the Assemble documentation, the Handlebars documentation, and Google.
 
 All generated HTML files will end up in the `build/` folder.

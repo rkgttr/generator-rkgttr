@@ -62,6 +62,11 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
          checked: true
       },
       {
+         name: 'Use PUG(Jade) templates engine, use Assemble templates engine if unchecked',
+         value: 'usePug',
+         checked: true
+      },
+      {
          name: 'Include table elements style overrides',
          value: 'overrideTable',
          checked: true
@@ -123,6 +128,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       this.includeModal = hasFeature( 'includeModal' );
       this.includeTooltip = hasFeature( 'includeTooltip' );
       this.includeRouter = hasFeature( 'includeRouter' );
+      this.usePug = hasFeature( 'usePug' );
       this.overrideForm = hasFeature( 'overrideForm' );
       this.overrideTable = hasFeature( 'overrideTable' );
       this.overrideButton = hasFeature( 'overrideButton' );
@@ -145,8 +151,6 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       '_bower.json',
       'gulpfile.babel.js',
       'babelrc',
-      'launch.command',
-      'launch.bat',
       'README.md'
     ];
     this.mkdir( 'src' );
@@ -160,8 +164,12 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
     this.directory( 'scss', 'src/scss' );
     this.directory( 'favicon', 'src/favicon' );
     this.directory( 'js', 'src/js' );
+    if(this.usePug) {
+      this.directory( 'pug', 'src/pug' );
+    } else {
+      this.directory( 'templates', 'src/templates' ); 
+    }
     this.directory( 'gulp', 'gulp' );
-    this.directory( 'pug', 'src/pug' );
     this.expandFiles( '*', {
       cwd: this.sourceRoot(),
       dot: true
@@ -172,10 +180,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
     }, this );
 
     this.template( '_package.json', 'package.json' );
-    this.template( '_bower.json', 'bower.json' );
-    this.copy( 'launch.command' );
-    this.copy( 'launch.bat' );
-    this.copy( 'gitignore', '.gitignore' );
+    this.template( '_bower.json', 'bower.json' );    this.copy( 'gitignore', '.gitignore' );
     this.copy( 'babelrc', '.babelrc' );
   },
 

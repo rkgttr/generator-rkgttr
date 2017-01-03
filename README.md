@@ -3,7 +3,7 @@
 This Yeoman generator will help you through the process of setting up static frontend projects. It scaffolds a simple framework using [NodeJS](http://nodejs.org/), [Yeoman](http://yeoman.io/), [Bower](http://bower.io/), [Yarn](https://yarnpkg.com) and [Gulp](http://gulpjs.com/), that automates a lot of tasks such as preprocessing your files and minify them. The framework includes:
 
 * A convenient folder structure.
-* An optional set of [pug](http://pug-lang.com/) templates based on HTML5 Boilerplate to generate your pages.
+* A set of [pug](http://pug-lang.com/) or [Assemble](http://assemble.io/) templates to generate your pages.
 * Several [SCSS](http://sass-lang.com/) files that compile in a single autoprefixed minified CSS files.
 * [jQuery](https://jquery.org/)(optional) and a few JavaScript helpers that compile in a single minified JavaScript file.
 * An image minifier.
@@ -64,7 +64,7 @@ In the console that opens, type:
 
 	yo rkgttr
 
-Press Enter and answer the few questions about the project name, description and version.
+Press Enter and answer the few questions about the project name, description, version, and optional features.
 
 When all this is done, all your templates files will be under your project folder.
 
@@ -79,7 +79,10 @@ Open [http://localhost:8080/](http://localhost:8080/) to see this in action.
 Don't forget to launch the `gulp` command before working on your project.
 
 There are two main folders in your folder: `build/` and `src/`. `build/` contains the compiled, concatenated and minified files you will deploy. You should never work into the `build` folder, if you do, you'll suffer immeasurable pain and die miserably. `src/` contains your working files, work here, and only here. 
-Save your pug templates into the `src/pug` folder, and all your included Pug templates into the `src/pug/includes` folder. All generated HTML files will end up in the `build/` folder.
+If you choose to use Pug, save your Pug pages contents into the `src/pug/pages` folder, and all your included Pug partials into the `src/pug/includes` folder. All pages will use the `src/pug/layouts/default.pug` layout, if you wish to use additional layouts, create them into `src/pug/layouts/`, and extend these new layouts in your new pages. 
+If you prefer a more traditional approach to HTML markup, while keeping the benefits of a templating language, you can choose to use Assemble instead of Pug when you run `yo rkgttr`. Assemble templates files use the same folder structure as Pug's ones, except they will be located under the `src/templates` folder. Assemble uses [Handlebars](http://handlebarsjs.com/) to create dynamic content based on JSON or YAML data. You can use custom Handlebars helpers to do advanced data handling, and for this, please refer to the Assemble documentation, the Handlebars documentation, and Google.
+
+All generated HTML files will end up in the `build/` folder.
 
 Always write your JavaScript into `src/js/main.js`, or create additional modules. You can use [ECMAScript 6](https://babeljs.io/) or standard ECMAScript 5. However, avoid using any ES6 functionalities that depend on the Babel Polyfill, or you'll have to include it by uncommenting the corresponding line in `src/js/main.js`. Your code and modules will be bundled and minifed as ES5.
 

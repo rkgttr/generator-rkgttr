@@ -33,6 +33,6 @@ gulp.task('js', () => {
       preserveComments: 'license'
     }))
     .pipe(header(config.banner))
-    .pipe(gulp.dest(`${config.build}/js`))
+    .pipe(gulp.dest(config.build + '/js'))
     .pipe(bs.stream());
 });

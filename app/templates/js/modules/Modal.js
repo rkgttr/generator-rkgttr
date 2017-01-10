@@ -51,7 +51,7 @@ export default function() {
     closeBtn;
 
   router.addRoutes({
-    route: 'modal/:modalId',
+    route: '#modal/:modalId',
     handler: (modalId, e) => {
       modal = Q.id('modal/' + modalId);
       wrapper = Q.one('.modal-wrapper', modal);

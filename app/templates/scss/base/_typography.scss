@@ -1,0 +1,68 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+ul {
+  @include plumber-box( $margin: 2 3);
+}
+
+li {
+  @include plumber( $leading-bottom: 1);
+  margin-left: 1em;
+}
+
+span {
+  @include plumber();
+}
+
+p {
+  @include plumber($leading-bottom: 2);
+}
+
+blockquote {
+  margin: 0 4rem;
+  @include plumber($font-size: 2.5, $leading-top: 2, $leading-bottom: 2, $line-height: 4);
+  font-style: italic;
+}
+
+cite {
+  display: block;
+  margin: 0 6rem;
+  @include plumber($font-size: 1.8, $leading-bottom: 2, $leading-top: -1);
+  font-weight: 700;
+  font-style: normal;
+}
+
+figcaption {
+  @include plumber( $font-size: 1.6, $leading-top: -1);
+}
+
+h1 {
+  font-family: $header-font;
+  @include plumber($font-size: 5, $line-height: 6, $baseline: $header-baseline);
+}
+
+h2 {
+  font-family: $header-font;
+  @include plumber($font-size: 4, $line-height: 5, $baseline: $header-baseline);
+}
+
+h3 {
+  font-family: $header-font;
+  @include plumber($font-size: 3, $line-height: 4, $baseline: $header-baseline);
+}
+
+h4 {
+  font-family: $header-font;
+  @include plumber($font-size: 2.5, $baseline: $header-baseline);
+}
+
+h5 {
+  font-family: $header-font;
+  @include plumber($font-size: 2.2, $baseline: $header-baseline);
+}

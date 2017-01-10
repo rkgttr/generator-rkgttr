@@ -98,9 +98,10 @@ Always put your images into `src/img/`. If you delete an image, it will not be d
 The SASS folders are broken up based loosely on the principles outlined in [SMACSS - Scalable and Modular Architecture for CSS](https://smacss.com/) and is intended to be used with a MOBILE FIRST approach.
 
 Base: 
-base.scss - Headings, typography, resets etc.
-fonts.scss - Font Face, Icon Fonts.
-normalize.scss - CSS reset for SCSS
+`_base.scss` - Base style, etc.
+`_typography.scss` - Headings, typography, etc.
+`_fonts.scss` - Font Face, Icon Fonts.
+`_normalize.scss` - CSS reset for SCSS
 
 Layout:
 Create individual SCSS files here for different sections of the website e.g header, footer, front-page etc.
@@ -109,8 +110,10 @@ Modules:
 Create SCSS files for reusable modules or elements in the website e.g buttons, slideshows, galleries, forms etc.
 
 Tools:
-mixins.scss - Add your mixins here.
-variables.scss - Set your variables here, font colours, media queries etc.
+`_mixins.scss` - Add your mixins here.
+`_variables.scss` - Set your variables here, font colours, media queries etc.
+
+All the typographic styles are using [Plumber](https://jamonserrano.github.io/plumber-sass/) which is useful to deal with the vertical rythm of your page. if you wish to use it too, you might need to adjust your custom fonts baselines values into `_variables.scss` using this [tool](https://jamonserrano.github.io/plumber-sass/measure/).
 
 You can write all your mediaqueries as you go by nesting them directly in your code. For example:
 
@@ -119,7 +122,7 @@ You can write all your mediaqueries as you go by nesting them directly in your c
         @media screen and (min-width: 768px) {
             color: white;
         }
-        @media @my-mediaquery-variable {
+        @media #{$my-mediaquery-variable} {
             color: red;
         }
     }

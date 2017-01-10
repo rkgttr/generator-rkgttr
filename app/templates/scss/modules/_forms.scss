@@ -1,4 +1,5 @@
 <% if (overrideForm){ %>
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -15,7 +16,15 @@ input[type="tel"],
 input[type="color"],
 select,
 textarea {
-  padding: 0.5em 0.6em;
+  font-size: 2rem;
+  line-height: 3rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  @include plumber-box(
+    $padding: 1,
+    $margin: 0 1,
+    $border: 1px
+  );
   display: inline-block;
   border: 1px solid $input-border-color;
   border-radius: $input-border-radius;
@@ -30,16 +39,24 @@ textarea {
     background-color: $input-disabled-background-color;
     color: $input-disabled-color;
   }
-  &.stacked {
-    display: block;
-    margin: 0.25em 0;
-  }
+}
+
+input[type=file] {
+  @include plumber();
 }
 
 
 
 input:not([type]) {
-  padding: 0.5em 0.6em;
+  font-size: 2rem;
+  line-height: 3rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  @include plumber-box(
+    $padding: 1,
+    $margin: 0 1,
+    $border: 1px
+  );
   display: inline-block;
   border: 1px solid $input-border-color;
   border-radius: $input-border-radius;
@@ -53,16 +70,12 @@ input:not([type]) {
     background-color: $input-disabled-background-color;
     color: $input-disabled-color;
   }
-  &.stacked {
-    display: block;
-    margin: 0.25em 0;
-  }
 }
 
 
 
 input[type="color"] {
-  padding: 0.2em 0.5em;
+  padding: 1rem;
 }
 
 input[type="file"]:focus,
@@ -95,50 +108,40 @@ input[type="checkbox"]:focus:invalid:focus {
   outline-color: $input-error;
 }
 
-input[type="file"] {
-  &.stacked {
-    display: block;
-    margin: 0.25em 0;
-  }
-}
+
 
 select {
   /* Normalizes the height; padding is not sufficient. */
-  height: 2.25em;
+  height: calc(5rem - 2px);
   border: 1px solid $input-border-color;
   background-color: $white;
-  &.stacked {
-    display: block;
-    margin: 0.25em 0;
-  }
   &[multiple] {
     height: auto;
   }
 }
 
 label {
-  margin: 0.5em 0 0.2em;
-  &.stacked {
-    display: block;
-    margin: 0.25em 0;
-  }
+  display: inline-block;
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  vertical-align: middle;
 }
 
 fieldset {
   margin: 0;
-  padding: 0.35em 0 0.75em;
+  padding: 1rem 0 2rem;
   border: 0;
 }
 
 legend {
   display: block;
   width: 100%;
-  padding: 0.3em 0;
-  margin-bottom: 0.3em;
+  @include plumber();
   color: $legend-color;
   border-bottom: 1px solid $legend-border-bottom-color;
 }
-
 <% } %>
 
 

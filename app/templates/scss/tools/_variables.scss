@@ -34,18 +34,22 @@ $tooltip-background-color: #666;
 $tooltip-content-color: #fff;
 
 // Typography
-$global-font: sans-serif;
+$global-font: Georgia, Times, Times New Roman, serif;
+$global-baseline: 0.151123; // baseline of your font, calculate it here: https://jamonserrano.github.io/plumber-sass/measure/
+$header-font: Arial, Helvetica Neue, Helvetica, sans-serif;
+$header-baseline: 0.153320; // baseline of your font, calculate it here: https://jamonserrano.github.io/plumber-sass/measure/
 $min-global-font-size: 14px;
 $max-global-font-size: 20px;
-$global-line-height: 1.5;
 
 
 // breakpoints
+$landscape: 'only screen and (orientation: landscape) and (max-width:48em)';
 $medium: 'only screen and (min-width:48em)';
 $large: 'only screen and (min-width:64em)';
+$xlarge: 'only screen and (min-width:96em)';
 
 // max width of content: 
-$max-width: 1200px;
+$max-width: 120rem; // ($max-global-font-size / 2) * 120, adjust to your liking
 
 
 

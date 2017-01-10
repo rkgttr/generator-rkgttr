@@ -5,7 +5,7 @@ import uglify from 'gulp-uglify';
 import config from '../config';
 
 gulp.task('mdnz', () => {
-  return gulp.src('.src/js/*.js')
+  return gulp.src('./src/js/*.js')
     .pipe(modernizr('modernizr.js', {
       // if you want to exclude some test, add them here, see https://github.com/Modernizr/customizr
       excludeTests: []

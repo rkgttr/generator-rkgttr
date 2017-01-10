@@ -44,6 +44,8 @@
     "rollup-plugin-includepaths": "^0.2.1",
     "rollup-stream": "^1.16.0",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "plumber-box": "^1.1.0",
+    "plumber-sass": "^0.7.6"
   }
 }

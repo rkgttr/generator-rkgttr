@@ -1,29 +1,40 @@
+@include plumber-set-defaults( $baseline: $global-baseline);
 body,
 html {
-	height: 100%;
-	background: $white;
+  height: 100%;
+  background: $white;
 }
+
 html {
-  line-height: $global-line-height;
-  @include fluid-type($min-global-font-size, $max-global-font-size);
+  @include fluid-type();
   box-sizing: border-box;
 }
+
 body {
   color: $black;
+  font-family: $global-font;
+  &.grid {
+    background-image: repeating-linear-gradient(to top, rgba(242, 201, 76, 0.5) 0, rgba(242, 201, 76, 0.5) 1px, transparent 1px, transparent);
+    background-size: 100% 1rem;
+  }
 }
+
+
+
 .wrapper {
   height: 100%;
   max-width: $max-width;
   margin: 0 auto;
 }
+
 // better default, can be changed to your convenience, comment the lines that you don't want
 * {
-  box-sizing:inherit;
+  box-sizing: inherit;
   background-repeat: no-repeat;
   position: relative;
   &:before,
   &:after {
-    box-sizing:inherit;
+    box-sizing: inherit;
     background-repeat: no-repeat;
     position: relative;
   }

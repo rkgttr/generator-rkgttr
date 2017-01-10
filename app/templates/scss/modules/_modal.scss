@@ -47,36 +47,36 @@
     right: 0;
     bottom: 0;
     overflow: auto;
-    padding: 3rem;
+    padding: 6rem;
   }
   &-content {
     background-color:$modal-background;
     min-height: 100%;
     width: 100%;
-    box-shadow: 0 0 1rem $modal-shadow-color;
+    box-shadow: 0 0 2rem $modal-shadow-color;
     border-radius: $modal-border-radius;
-    padding: 3rem;
+    padding: 6rem;
   }
   &-close {
     position: absolute;
-    top: 4rem;
-    right: 4rem;
-    height: 3rem;
-    width: 3rem;
+    top: 8rem;
+    right: 8rem;
+    height: 6rem;
+    width: 6rem;
     overflow: hidden;
     text-indent: 120%;
     white-space: nowrap;
     color: rgba($black, 0);
     text-align: center;
-    line-height: 3rem;
+    line-height: 6rem;
     &:before,
     &:after {
       position: absolute;
       content: '';
       height: 1px;
-      width: 2rem;
-      border-left: 1rem solid $black;
-      border-right: 1rem solid $black;
+      width: 4rem;
+      border-left: 2rem solid $black;
+      border-right: 2rem solid $black;
       left: 0;
       top: 50%;
       transition: transform .25s ease, border-left-width .25s ease, border-right-width .25s ease;
@@ -94,8 +94,8 @@
       }
       &:after {
         transform: rotate(45deg);
-        border-left-width: .8rem;
-        border-right-width: .95rem;
+        border-left-width: 1.6rem;
+        border-right-width: 1.9rem;
       }
     }
   }

@@ -12,19 +12,23 @@ p {
   margin: 0;
 }
 
+dl,
 ol,
 ul {
   @include plumber-box( $margin: 2 3);
 }
 
+dd,
+dt,
 li {
   @include plumber( $leading-bottom: 1);
-  margin-left: 1em;
 }
 
-a,
 p,
-span {
+pre,
+ins,
+caption,
+address {
   @include plumber();
 }
 

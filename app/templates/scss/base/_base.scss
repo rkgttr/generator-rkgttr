@@ -14,12 +14,9 @@ body {
   color: $black;
   font-family: $global-font;
   &.grid {
-    background-image: repeating-linear-gradient(to top, rgba(242, 201, 76, 0.5) 0, rgba(242, 201, 76, 0.5) 1px, transparent 1px, transparent);
-    background-size: 100% 1rem;
+    background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(1rem - 1px) rgba(#0092b7, .3) 0, rgba(#0092b7, .3) 1rem);
   }
 }
-
-
 
 .wrapper {
   height: 100%;

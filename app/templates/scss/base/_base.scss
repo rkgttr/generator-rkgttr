@@ -24,7 +24,9 @@ body {
 .wrapper {
   height: 100%;
   max-width: $max-width;
+  padding: 0 4rem;
   margin: 0 auto;
+  @include plumber-box($padding: 4);
 }
 
 // better default, can be changed to your convenience, comment the lines that you don't want

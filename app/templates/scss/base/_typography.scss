@@ -2,6 +2,7 @@ body {
   font-size: 2rem;
   line-height: 3rem;
 }
+
 h1,
 h2,
 h3,
@@ -11,6 +12,7 @@ p {
   margin: 0;
 }
 
+ol,
 ul {
   @include plumber-box( $margin: 2 3);
 }
@@ -25,7 +27,6 @@ p,
 span {
   @include plumber();
 }
-
 
 blockquote {
   margin: 0 4rem;
@@ -47,25 +48,25 @@ figcaption {
 
 h1 {
   font-family: $header-font;
-  @include plumber($font-size: 5, $line-height: 6, $baseline: $header-baseline);
+  @include plumber($font-size: 5, $line-height: 6, $leading-top: 5, $leading-bottom: 4, $baseline: $header-baseline);
 }
 
 h2 {
   font-family: $header-font;
-  @include plumber($font-size: 4, $line-height: 5, $baseline: $header-baseline);
+  @include plumber($font-size: 4, $line-height: 5, $leading-top: 6, $baseline: $header-baseline);
 }
 
 h3 {
   font-family: $header-font;
-  @include plumber($font-size: 3, $line-height: 4, $baseline: $header-baseline);
+  @include plumber($font-size: 3, $leading-top: 5, $line-height: 4, $baseline: $header-baseline);
 }
 
 h4 {
   font-family: $header-font;
-  @include plumber($font-size: 2.5, $baseline: $header-baseline);
+  @include plumber($font-size: 2.5, $leading-top: 4, $baseline: $header-baseline);
 }
 
 h5 {
   font-family: $header-font;
-  @include plumber($font-size: 2.2, $baseline: $header-baseline);
+  @include plumber($font-size: 2.2, $leading-top: 3, $baseline: $header-baseline);
 }

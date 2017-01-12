@@ -4,6 +4,7 @@
 <% if (includeJquery){ %> import 'jquery';<% } %>
 import * as Q from 'Q';
 import * as Helpers from 'Helpers';
+import Publisher from 'Publisher';
 
 
 // uncomment following line if script fails in Internet Explorer, or other

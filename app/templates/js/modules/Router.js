@@ -43,7 +43,7 @@ export default class {
           return typeof this.lookup[this.currentRoute.route] === 'function' && matches > 0 ? this.lookup[this.currentRoute.route]() : this.default();
         };
       window.addEventListener('hashchange', setLocation);
-      window.dispatchEvent(new Event('hashchange'));
+      this.dispatch();
     }
     return window.routerInstance;
   }
@@ -71,8 +71,11 @@ export default class {
     this.routes.push(route);
     this.matchers.push(new RegExp(route.replace(/:[^\s/]+/g, '([\\w-]+)')));
     this.lookup[route] = () => handler(...this.currentRoute.result);
-    window.dispatchEvent(new Event('hashchange'));
+    this.dispatch();
+
   }
+
+  
 
   /**
     Add several routes at once
@@ -88,8 +91,19 @@ export default class {
       this.routes.push(routeObj.route);
       this.matchers.push(new RegExp(routeObj.route.replace(/:[^\s/]+/g, '([\\w-]+)')));
       this.lookup[routeObj.route] = () => routeObj.handler(...this.currentRoute.result);
-      window.dispatchEvent(new Event('hashchange'));
+      this.dispatch();
     });
+  }
+
+  dispatch() {
+    let hashchangeEvent = null;
+    try {
+      hashchangeEvent = new Event('hashchange');
+    } catch(e) {
+      hashchangeEvent = document.createEvent("Event");
+      hashchangeEvent.initEvent("hashchange", false, false);
+    }
+    window.dispatchEvent(hashchangeEvent);
   }
 
 }

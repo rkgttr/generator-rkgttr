@@ -165,11 +165,16 @@ Remember when adding a file, you must also add it to `main.scss`.
 ### Using JavaScript
 
 The JavaScript use the ES6 module syntax. If you want to create additional modules, create them into `src/js/modules` then import them into `src/js/main.js`. You can install traditional NPM modules and import them the same way. But you might want to create some shortcuts to the modules main js file into `gulp/tasks/javascript.js` into the `includePathOptions` object. Look at how `babel-polyfill` is linked to see how it works. Please note that any change into the gulp tasks require that you restart gulp to make them work.
+
+All the ES6 files that you'll use will get bundled and minified into a single JS file under `./build/js/global.min.js`.
+
 Several optional polyfills are included in the project. The polyfills are for [`matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches), [`mutationobserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver), [`classList`](https://developer.mozilla.org/fr/docs/Web/API/Element/classList), and [`weakmap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap). Uncomment the related modules in `src/js/main.js`.
 
-#### Helper modules
+Other optional modules are included in the project, you can import them if you need. `Q`, `Helpers`, and `Publisher` are imported by default, but if you don't use them, there are chances that they won't even appear into the bundled JavaScript thanks to the tree-shaking compression.
 
-##### Q
+#### JS Modules
+
+##### Q Module
 
 Q is a module that consists of shortcuts to select DOM elements. For example instead of typing `document.querySelectorAll('selector')` you just have to type `Q.all('selector')`. Following is the list of Q methods:
 
@@ -179,7 +184,7 @@ Q is a module that consists of shortcuts to select DOM elements. For example ins
  * `classname`: shortcut for `document.getElementsByClassName`
  * `tag`: shortcut for `document.getElementsByTagName`
 
- ##### Helpers
+##### Helpers Module
 
 Helpers is a module that consists of useless methods:
 
@@ -187,7 +192,7 @@ Helpers is a module that consists of useless methods:
 * `delegate`: allows for event delegation. Useful to add event listeners on DOM elements that might not exist yet at the time of the event registration. Example: `document.addEventListener('click', delegate('.selector', e => console.log(e.delegateTarget))`.
 * `whichAnimationEvent`: return the browser prefixed animation event, or `undefined` if not supported.
 
-#### Modal module
+##### Modal module
 
 If you choose to include the modal module, then you'll get some JavaScript and SCSS to create simple accessible, progressively enhanced modals.
 Create a modal this way:
@@ -203,7 +208,7 @@ Create a modal this way:
 
 Modals id attributes should start with `modal/` otherwise it wont't work.
 
-#### Tooltip module
+##### Tooltip module
 
 If you choose to include the tooltip system module, then you'll get some SCSS to create tooltips. In HTML, a text that has a tooltip on rollover will be written this way:
 
@@ -212,7 +217,7 @@ If you choose to include the tooltip system module, then you'll get some SCSS to
 You can align your tooltip differently by replacing the `tooltip-top` class by `tooltip-bottom`, `tooltip-left`, or `tooltip-right`.
 
 
-#### Router module
+##### Router module
 
 If you choose to include the router module, then you'll get a JavaScript module to handle routes in your application. Routes lets you easily dispatch based on url-style strings. It's particularly useful for one page website applications, to switch from one state to another based on the URL hash changes, which allows you to store your application state into the browser history, and to use deep linking functionalities:
 
@@ -234,7 +239,7 @@ You also can invoke a navigation event straight from JavaScript like this:
     router.callRoute('#/product/1523');
 
 
-##### Router methods
+###### Router methods
 
 * Constructor: `new Router([function to handle the case when no route is provided or a route that is not registered is provided])`
 * `addRoute`: add a route, takes 2 parameters:
@@ -243,3 +248,86 @@ You also can invoke a navigation event straight from JavaScript like this:
 * `addRoutes`: takes an undefinite quantities of route objects that contains two properties `{route:'', handler:()=>}`:
     * `route`: a string representing the URL hash of the route.
     * `handler`: a method you want to invoke when the URL hash changes to this route.
+* `callRoute`: invoke a route programmatically:
+    * `route`: a string representing the URL hash of the route.
+
+
+##### Publisher module
+
+Based on [event-pubsub](https://www.npmjs.com/package/event-pubsub), a custom events publisher.
+
+###### Publisher static methods
+
+* `on`: will bind the handler function to the the type event. Just like addEventListener in the browser, takes 2 parameters:
+    * `type`: a string representing the event.
+    * `callback`: a method you want to invoke when this type of event is triggered.
+* `off`: will unbind the handler function from the the type event. If the handler is *, all handlers for the event type will be removed, takes 2 parameters:
+    * `type`: a string representing the event.
+    * `callback`: a method you want to remove when this type of event is triggered, or `*` if you want to remove all event handlers for this event.
+* `trigger`: will call all handler functions bound to the event type and pass all `...data` arguments to those handlers:
+    * `type`: a string representing the event.
+    * `...data`: Arguments to send when triggering the event.
+
+##### UUID module
+
+Just generate unique IDs:
+
+    import uuid from 'UUID';
+    console.log(uuid());
+
+##### Elements module
+
+A module to build DOM components, inspired from [David Gilbertson](https://github.com/davidgilbertson/know-it-all/). Example:
+
+    import Publisher from 'Publisher';
+    import uuid from 'UUID';
+    import { div, img, h2, p, a } from 'Elements';
+    const MediaObject = (initialData) => {
+      let el = null,
+        uid = uuid();
+
+      const render = data => (
+        div({ 
+            className: 'media',
+            dataset: {uid: uid}
+          },
+          a({
+              className: 'img',
+              href: '#',
+              onclick: (e) => {
+                e.preventDefault();
+                Publisher.trigger(`data:change`, {uid:uid, title: 'Hello', name: 'Mars' });
+              }
+            },
+            img({ src: 'http://placehold.it/350x150', alt: 'Alt text' })
+          ),
+          div({ className: 'bd' },
+            h2(data.title),
+            p(data.name)
+          )
+        )
+      );
+
+      const update = (prevEl, newData) => {
+        if(newData.uid !== uid) {
+          return prevEl;
+        }
+        const nextEl = render(newData);
+
+        if (nextEl.isEqualNode(prevEl)) {
+          console.warn(`render() was called but there was no change in the rendered output`, el);
+        } else {
+          prevEl.parentElement.replaceChild(nextEl, prevEl);
+        }
+
+        return nextEl;
+      };
+
+      Publisher.on(`data:change`, (newData) => el = update(el, newData));
+
+      el = render(initialData);
+
+      return el;
+
+    };
+    document.body.appendChild(MediaObject({ title: 'Hello', name: 'World' }));

@@ -10,7 +10,7 @@ class PublisherClass {
   on(type, handler) {
     if (!handler) {
       const err = new ReferenceError('handler not defined.');
-      throw (err);
+      throw err;
     }
 
     if (!this._events_[type]) {
@@ -27,7 +27,9 @@ class PublisherClass {
     }
 
     if (!handler) {
-      var err = new ReferenceError('handler not defined. if you wish to remove all handlers from the event please pass "*" as the handler');
+      var err = new ReferenceError(
+        'handler not defined. if you wish to remove all handlers from the event please pass "*" as the handler'
+      );
       throw err;
     }
 
@@ -39,10 +41,7 @@ class PublisherClass {
     const handlers = this._events_[type];
 
     while (handlers.includes(handler)) {
-      handlers.splice(
-        handlers.indexOf(handler),
-        1
-      );
+      handlers.splice(handlers.indexOf(handler), 1);
     }
 
     if (handlers.length < 1) {
@@ -59,9 +58,7 @@ class PublisherClass {
 
     const handlers = this._events_[type];
 
-    for (let handler of handlers) {
-      handler.apply(this, args);
-    }
+    handlers.forEach(handler => handler.call(this, ...args));
 
     return this.emit$(type, ...args);
   }
@@ -73,9 +70,7 @@ class PublisherClass {
 
     const catchAll = this._events_['*'];
 
-    for (let handler of catchAll) {
-      handler.call(this, type, ...args);
-    }
+    catchAll.forEach(handler => handler.call(this, ...args));
 
     return this;
   }

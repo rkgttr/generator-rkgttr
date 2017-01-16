@@ -160,6 +160,16 @@ Second mixin is the grid unit mixin, simply called `unit`, and it works like thi
 
 So in short, the first arguments is the base width of you grid unit, which will render as a percentage. e.g. `1` will be `100%`, `1/3` will be `33.3334%`, `0.5` will be `50%`. If you're on a mobile first approach, this will be the mobile width of your unit. If you're on a desktop first approach, this will be the desktop width of your unit. The other arguments are optional, they are mediaqueries and they define how your unit will react depending on several breakpoints. All the other arguments go by pair: the width of the unit, and the corresponding mediaquery. i.e.: width, mediaquery, width, mediaquery, ... You can have as many breakpoints as you want, and you can use SCSS variables that contain mediaqueries strings for more convenience.
 
+#### Tooltip module
+
+If you choose to include the tooltip system module, then you'll get some SCSS to create tooltips. In HTML, a text that has a tooltip on rollover will be written this way:
+
+    Text that contain a <span class="tooltip tooltip-top">tooltip</span>.
+
+You can align your tooltip differently by replacing the `tooltip-top` class by `tooltip-bottom`, `tooltip-left`, or `tooltip-right`.
+
+
+
 Remember when adding a file, you must also add it to `main.scss`.
 
 ### Using JavaScript
@@ -184,6 +194,12 @@ Q is a module that consists of shortcuts to select DOM elements. For example ins
  * `classname`: shortcut for `document.getElementsByClassName`
  * `tag`: shortcut for `document.getElementsByTagName`
 
+ All methods, except `Q.id` can have a second optional parameters, which should be a `Node` object, that is the context from where you want to perform the query. For example:
+    
+    Q.all('li'); // return all list elements in the document
+    Q.all('li', Q.one('ul.todo')); // return all list elements into the .todo list
+
+
 ##### Helpers Module
 
 Helpers is a module that consists of useless methods:
@@ -207,14 +223,6 @@ Create a modal this way:
     </div>
 
 Modals id attributes should start with `modal/` otherwise it wont't work.
-
-##### Tooltip module
-
-If you choose to include the tooltip system module, then you'll get some SCSS to create tooltips. In HTML, a text that has a tooltip on rollover will be written this way:
-
-    Text that contain a <span class="tooltip tooltip-top">tooltip</span>.
-
-You can align your tooltip differently by replacing the `tooltip-top` class by `tooltip-bottom`, `tooltip-left`, or `tooltip-right`.
 
 
 ##### Router module

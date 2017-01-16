@@ -12,36 +12,39 @@
  * 
  */
 
-
 export default class {
   /**
     defaultHandler: callback to execute when the supplied route doesn't exist
   */
-  constructor(defaultHandler = ()=> {}) {
-    if(window.routerInstance === undefined) {
+  constructor(defaultHandler = () => {}) {
+    if (window.routerInstance === undefined) {
       window.routerInstance = this;
       this.routes = [];
       this.matchers = [];
       this.lookup = {};
       this.default = () => defaultHandler();
-      this.currentRoute = {
-        route: '',
-        results: []
-      };
+      this.currentRoute = { route: '', results: [] };
       let setLocation = e => {
-          let hash = (e.newURL || document.location.hash).slice((e.newURL || document.location.hash).indexOf('#')),
-            matches = 0;
-          this.matchers.forEach((matcher, i) => {
-            let result = hash.match(matcher);
-            if (result && result.length > matches) {
-              matches = result.length;
-              this.currentRoute.route = this.routes[i];
-              this.currentRoute.result = result.filter(r => typeof r === 'string').slice(1);
-              this.currentRoute.result.push(e);
-            }
-          });
-          return typeof this.lookup[this.currentRoute.route] === 'function' && matches > 0 ? this.lookup[this.currentRoute.route]() : this.default();
-        };
+        let hash = (e.newURL || document.location.hash).slice(
+          (e.newURL || document.location.hash).indexOf('#')
+        ),
+          matches = 0;
+        this.matchers.forEach((matcher, i) => {
+          let result = hash.match(matcher);
+          if (result && result.length > matches) {
+            matches = result.length;
+            this.currentRoute.route = this.routes[i];
+            this.currentRoute.result = result
+              .filter(r => typeof r === 'string')
+              .slice(1);
+            this.currentRoute.result.push(e);
+          }
+        });
+        return typeof this.lookup[this.currentRoute.route] === 'function' &&
+          matches > 0
+          ? this.lookup[this.currentRoute.route]()
+          : this.default();
+      };
       window.addEventListener('hashchange', setLocation);
       this.dispatch();
     }
@@ -53,7 +56,7 @@ export default class {
    * @param  {String} route Your url hash such as '#!/route/param'
    */
   callRoute(route) {
-    if(route.indexOf('#') !== 0) {
+    if (route.indexOf('#') !== 0) {
       throw new Error('Your route should start with a #');
     }
     document.location.href = route;
@@ -65,17 +68,14 @@ export default class {
     handler(Function): function to call when the route is reached
   */
   addRoute(route, handler) {
-    if(route.indexOf('#') !== 0) {
+    if (route.indexOf('#') !== 0) {
       throw new Error('Your route should start with a #');
     }
     this.routes.push(route);
     this.matchers.push(new RegExp(route.replace(/:[^\s/]+/g, '([\\w-]+)')));
     this.lookup[route] = () => handler(...this.currentRoute.result);
     this.dispatch();
-
   }
-
-  
 
   /**
     Add several routes at once
@@ -84,13 +84,16 @@ export default class {
       - handler(Function): function to call when the route is reached
   */
   addRoutes(...routes) {
-    routes.forEach((routeObj)=> {
-      if(routeObj.route.indexOf('#') !== 0) {
+    routes.forEach(routeObj => {
+      if (routeObj.route.indexOf('#') !== 0) {
         throw new Error('Your route should start with a #');
       }
       this.routes.push(routeObj.route);
-      this.matchers.push(new RegExp(routeObj.route.replace(/:[^\s/]+/g, '([\\w-]+)')));
-      this.lookup[routeObj.route] = () => routeObj.handler(...this.currentRoute.result);
+      this.matchers.push(new RegExp(
+        routeObj.route.replace(/:[^\s/]+/g, '([\\w-]+)')
+      ));
+      this.lookup[routeObj.route] = () =>
+        routeObj.handler(...this.currentRoute.result);
       this.dispatch();
     });
   }
@@ -99,14 +102,10 @@ export default class {
     let hashchangeEvent = null;
     try {
       hashchangeEvent = new Event('hashchange');
-    } catch(e) {
-      hashchangeEvent = document.createEvent("Event");
-      hashchangeEvent.initEvent("hashchange", false, false);
+    } catch (e) {
+      hashchangeEvent = document.createEvent('Event');
+      hashchangeEvent.initEvent('hashchange', false, false);
     }
     window.dispatchEvent(hashchangeEvent);
   }
-
 }
-
-
-

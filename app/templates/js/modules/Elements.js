@@ -66,7 +66,7 @@ const attributeExceptions = [
   `d`,
   `width`,
   `height`,
-  `viewBox`,
+  `viewBox`
 ];
 
 const SVG_NAMESPACE = `http://www.w3.org/2000/svg`;
@@ -77,7 +77,7 @@ function appendText(el, text) {
 }
 
 function appendArray(el, children) {
-  children.forEach((child) => {
+  children.forEach(child => {
     if (Array.isArray(child)) {
       appendArray(el, child);
     } else if (child instanceof window.Element) {
@@ -94,24 +94,26 @@ function setStyles(el, styles) {
     return;
   }
 
-  Object.keys(styles).forEach((styleName) => {
+  Object.keys(styles).forEach(styleName => {
     if (styleName in el.style) {
       el.style[styleName] = styles[styleName]; // eslint-disable-line no-param-reassign
     } else {
-      console.warn(`${styleName} is not a valid style for a <${el.tagName.toLowerCase()}>`);
+      console.warn(
+        `${styleName} is not a valid style for a <${el.tagName.toLowerCase()}>`
+      );
     }
   });
 }
 
 function setDataAttributes(el, dataAttributes) {
-  Object.keys(dataAttributes).forEach((dataAttribute) => {
+  Object.keys(dataAttributes).forEach(dataAttribute => {
     // jsdom doesn't support element.dataset, so set them as named attributes
     el.setAttribute(`data-${dataAttribute}`, dataAttributes[dataAttribute]);
   });
 }
 
 function isSvg(type) {
-  return [`path`, `svg`].includes(type);
+  return [ `path`, `svg` ].includes(type);
 }
 
 function makeElement(type, textOrPropsOrChild, ...otherChildren) {
@@ -123,10 +125,13 @@ function makeElement(type, textOrPropsOrChild, ...otherChildren) {
     appendArray(el, textOrPropsOrChild);
   } else if (textOrPropsOrChild instanceof window.Element) {
     el.appendChild(textOrPropsOrChild);
-  } else if (typeof textOrPropsOrChild === `string` || typeof textOrPropsOrChild === `number`) {
+  } else if (
+    typeof textOrPropsOrChild === `string` ||
+      typeof textOrPropsOrChild === `number`
+  ) {
     appendText(el, textOrPropsOrChild);
   } else if (typeof textOrPropsOrChild === `object`) {
-    Object.keys(textOrPropsOrChild).forEach((propName) => {
+    Object.keys(textOrPropsOrChild).forEach(propName => {
       if (propName in el || attributeExceptions.includes(propName)) {
         const value = textOrPropsOrChild[propName];
 
@@ -145,12 +150,11 @@ function makeElement(type, textOrPropsOrChild, ...otherChildren) {
     });
   }
 
-  if (otherChildren) appendArray(el, otherChildren);
+  if (otherChildren)
+    appendArray(el, otherChildren);
 
   return el;
 }
-
-
 
 export const a = (...args) => makeElement(`a`, ...args);
 export const abbr = (...args) => makeElement(`abbr`, ...args);

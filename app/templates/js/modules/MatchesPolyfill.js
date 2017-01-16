@@ -1,7 +1,6 @@
 const matchesPolyfill = (() => {
   if (!Element.prototype.matches) {
-    Element.prototype.matches =
-      Element.prototype.matchesSelector ||
+    Element.prototype.matches = Element.prototype.matchesSelector ||
       Element.prototype.mozMatchesSelector ||
       Element.prototype.msMatchesSelector ||
       Element.prototype.oMatchesSelector ||
@@ -15,4 +14,4 @@ const matchesPolyfill = (() => {
   }
 })();
 
-export {matchesPolyfill as default};
+export { matchesPolyfill as default };

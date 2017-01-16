@@ -1,4 +1,3 @@
-
 export function getType(value) {
   if (value === undefined) {
     return 'Undefined';
@@ -20,20 +19,19 @@ export function delegate(match, listener) {
       e.delegatedTarget = el;
       listener.apply(this, arguments);
       return;
-    } while ((el = el.parentNode));
+    } while (el = el.parentNode);
   };
 }
 
-
-export function whichAnimationEvent(){
+export function whichAnimationEvent() {
   let t,
     el = document.createElement('div'),
     animations = {
-    'animation': 'animationend',
-    'OAnimation': 'oAnimationEnd',
-    'MozAnimation': 'Animationend',
-    'WebkitAnimation': 'webkitAnimationEnd'
-  };
+      animation: 'animationend',
+      OAnimation: 'oAnimationEnd',
+      MozAnimation: 'Animationend',
+      WebkitAnimation: 'webkitAnimationEnd'
+    };
 
   for (t in animations) {
     if (el.style[t] !== undefined) {

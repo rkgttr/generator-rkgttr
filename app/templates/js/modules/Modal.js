@@ -60,7 +60,10 @@ export default function() {
       modal.setAttribute('tabindex', '0');
       modal.setAttribute('role', 'dialog');
       modal.setAttribute('aria-label', 'Dialog window, press escape to close');
-      closeBtn.setAttribute('aria-label', 'Press escape to close the dialog window');
+      closeBtn.setAttribute(
+        'aria-label',
+        'Press escape to close the dialog window'
+      );
       closeBtn.setAttribute('role', 'button');
       window.addEventListener('keyup', escapeHandler);
       document.addEventListener('focus', focusHandler, true);

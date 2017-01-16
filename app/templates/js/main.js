@@ -25,6 +25,8 @@ import Publisher from 'Publisher';
 // uncomment following line if you need to polyfill MutationObserver, for IE10 support
 // import 'MutationObserverPolyfill';
 
+// uncomment following line if you need to polyfill Array.includes, for IE support. Mandatory if you make use of the Publisher module
+// import 'ArrayIncludesPolyfill';
 
 /**
  *

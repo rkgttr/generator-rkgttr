@@ -2,13 +2,31 @@ const consolePolyfill = (() => {
   let method,
     noop = () => {},
     methods = [
-      'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-      'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-      'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-      'timeStamp', 'trace', 'warn'
+      'assert',
+      'clear',
+      'count',
+      'debug',
+      'dir',
+      'dirxml',
+      'error',
+      'exception',
+      'group',
+      'groupCollapsed',
+      'groupEnd',
+      'info',
+      'log',
+      'markTimeline',
+      'profile',
+      'profileEnd',
+      'table',
+      'time',
+      'timeEnd',
+      'timeStamp',
+      'trace',
+      'warn'
     ],
     length = methods.length,
-    console = (window.console = window.console || {});
+    console = window.console = window.console || {};
 
   while (length--) {
     method = methods[length];
@@ -18,4 +36,4 @@ const consolePolyfill = (() => {
   }
 })();
 
-export {consolePolyfill as default};
+export { consolePolyfill as default };

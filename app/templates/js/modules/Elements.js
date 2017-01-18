@@ -4,14 +4,14 @@
  * Example:
  *
 import Publisher from 'Publisher';
-import uuid from 'UUID';
+import uuid from 'rkgttr-uuid';
 import { div, img, h2, p, a } from 'Elements';
 const MediaObject = (initialData) => {
   let el = null,
     uid = uuid();
 
   const render = data => (
-    div({ 
+    div({
         className: 'media',
         dataset: {uid: uid}
       },

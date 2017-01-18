@@ -22,31 +22,41 @@ Open a console (Windows: `Win+R` then type `cmd` then press Enter, Mac: `Command
 
 Install Gulp by entering the following command:
 
-    npm install -g gulp
+```sh
+npm install -g gulp
+```
 
  And press Enter
 
 Install Bower by entering the following command:
 
-    npm install -g bower
+```sh
+npm install -g bower
+```
 
  And press Enter
 
 Install Yarn by entering the following command:
 
-    npm install -g yarn
+```sh
+npm install -g yarn
+```
 
  And press Enter
 
 Install Yeoman by entering the following command:
 
-    npm install -g yo
+```sh
+npm install -g yo
+```
 
  And press Enter
 
 Install the project generator by entering the following command:
 
-    npm install -g generator-rkgttr
+```sh
+npm install -g generator-rkgttr
+```
 
 If other things fails when installing, or when running the project, look at the log, you might want to install other frameworks and tools such as Python and GIT.
 
@@ -56,13 +66,15 @@ When all done, press Enter
 
 **The following needs to be done per project.**
 
-Create a new folder. 
+Create a new folder.
 
 Move into this folder then `shift + right click` and select "Open command window here", on Mac open a Terminal and move to this folder (`cd \[your-path\]`) or go to `System Preferences \> Keyboard \> Keyboard Shortcuts \> Services` and enable `New Terminal at Folder` and the service will appear by `right click` or `Control + click` on the folder.
 
 In the console that opens, type:
 
-	yo rkgttr
+```sh
+yo rkgttr
+```
 
 Press Enter and answer the few questions about the project name, description, version, and optional features.
 
@@ -78,9 +90,9 @@ Open [http://localhost:8080/](http://localhost:8080/) to see this in action.
 
 Don't forget to launch the `gulp` command before working on your project.
 
-There are two main folders in your folder: `build/` and `src/`. `build/` contains the compiled, concatenated and minified files you will deploy. You should never work into the `build` folder, if you do, you'll suffer immeasurable pain and die miserably. `src/` contains your working files, work here, and only here. 
+There are two main folders in your folder: `build/` and `src/`. `build/` contains the compiled, concatenated and minified files you will deploy. You should never work into the `build` folder, if you do, you'll suffer immeasurable pain and die miserably. `src/` contains your working files, work here, and only here.
 
-If you choose to use Pug, save your Pug pages contents into the `src/pug/pages` folder, and all your included Pug partials into the `src/pug/includes` folder. All pages will use the `src/pug/layouts/default.pug` layout, if you wish to use additional layouts, create them into `src/pug/layouts/`, and extend these new layouts in your new pages. 
+If you choose to use Pug, save your Pug pages contents into the `src/pug/pages` folder, and all your included Pug partials into the `src/pug/includes` folder. All pages will use the `src/pug/layouts/default.pug` layout, if you wish to use additional layouts, create them into `src/pug/layouts/`, and extend these new layouts in your new pages.
 
 If you prefer a more traditional approach to HTML markup, while keeping the benefits of a templating language, you can choose to use Assemble instead of Pug when you run `yo rkgttr`. Assemble templates files use the same folder structure as Pug's ones, except they will be located under the `src/templates` folder. Assemble uses [Handlebars](http://handlebarsjs.com/) to create dynamic content based on JSON or YAML data. You can use custom Handlebars helpers to do advanced data handling, and for this, please refer to the Assemble documentation, the Handlebars documentation, and Google.
 
@@ -97,7 +109,7 @@ Always put your images into `src/img/`. If you delete an image, it will not be d
 
 The SASS folders are broken up based loosely on the principles outlined in [SMACSS - Scalable and Modular Architecture for CSS](https://smacss.com/) and is intended to be used with a MOBILE FIRST approach.
 
-Base: 
+Base:
 `_base.scss` - Base style, etc.
 `_typography.scss` - Headings, typography, etc.
 `_fonts.scss` - Font Face, Icon Fonts.
@@ -117,15 +129,17 @@ All the typographic styles are using [Plumber](https://jamonserrano.github.io/pl
 
 You can write all your mediaqueries as you go by nesting them directly in your code. For example:
 
-    .selector{
-        color: blue;
-        @media screen and (min-width: 768px) {
-            color: white;
-        }
-        @media #{$my-mediaquery-variable} {
-            color: red;
-        }
+```css
+.selector{
+    color: blue;
+    @media screen and (min-width: 768px) {
+        color: white;
     }
+    @media #{$my-mediaquery-variable} {
+        color: red;
+    }
+}
+```
 
 For more convenience, a few common breakpoint variables have been added to `src/scss/_variables.scss`. You can add more breakpoints here if you want, or edit/delete the ones that already exist. Don't forget that IE8 doesn't support mediaqueries so you will need to have a desktop first approach if you need to support IE8.
 
@@ -137,34 +151,47 @@ The grid system is based on [PureCSS](http://purecss.io/) in term of philosophy:
 
 First one is the `%grid-row` placeholder that you should extend to create the container for your grid units, and works like this:
 
-    .your-section {
-        @extend %grid-row;
-    }
+```css
+.your-section {
+    @extend %grid-row;
+}
+```
 
 
 ##### The grid unit
 
 Second mixin is the grid unit mixin, simply called `unit`, and it works like this:
 
-    .your-selector {
-        @include unit(1/2);
-    }
-    /* or */
-    .your-selector {
-        @include unit(1, 1/2, $medium, 1/3, $large);
-    }
-    /* or */
-    .your-selector {
-        @include unit(1, 1/2, 'only screen and (min-width:48em)', 1/3, 'only screen and (min-width:64em)') ;
-    }
+```css
+.your-selector {
+    @include unit(1/2);
+}
+```
 
+or
+
+```css
+.your-selector {
+    @include unit(1, 1/2, $medium, 1/3, $large);
+}
+```
+
+or
+
+```css
+.your-selector {
+    @include unit(1, 1/2, 'only screen and (min-width:48em)', 1/3, 'only screen and (min-width:64em)') ;
+}
+```
 So in short, the first arguments is the base width of you grid unit, which will render as a percentage. e.g. `1` will be `100%`, `1/3` will be `33.3334%`, `0.5` will be `50%`. If you're on a mobile first approach, this will be the mobile width of your unit. If you're on a desktop first approach, this will be the desktop width of your unit. The other arguments are optional, they are mediaqueries and they define how your unit will react depending on several breakpoints. All the other arguments go by pair: the width of the unit, and the corresponding mediaquery. i.e.: width, mediaquery, width, mediaquery, ... You can have as many breakpoints as you want, and you can use SCSS variables that contain mediaqueries strings for more convenience.
 
 #### Tooltip module
 
 If you choose to include the tooltip system module, then you'll get some SCSS to create tooltips. In HTML, a text that has a tooltip on rollover will be written this way:
 
-    Text that contain a <span class="tooltip tooltip-top">tooltip</span>.
+```html
+<p>Text that contain a <span class="tooltip tooltip-top">tooltip<div class="tooltip-text">tooltip text</div></span></p>.
+```
 
 You can align your tooltip differently by replacing the `tooltip-top` class by `tooltip-bottom`, `tooltip-left`, or `tooltip-right`.
 
@@ -195,10 +222,11 @@ Q is a module that consists of shortcuts to select DOM elements. For example ins
  * `tag`: shortcut for `document.getElementsByTagName`
 
  All methods, except `Q.id` can have a second optional parameters, which should be a `Node` object, that is the context from where you want to perform the query. For example:
-    
-    Q.all('li'); // return all list elements in the document
-    Q.all('li', Q.one('ul.todo')); // return all list elements into the .todo list
 
+```js    
+Q.all('li'); // return all list elements in the document
+Q.all('li', Q.one('ul.todo')); // return all list elements into the .todo list
+```
 
 ##### Helpers Module
 
@@ -213,14 +241,16 @@ Helpers is a module that consists of useless methods:
 If you choose to include the modal module, then you'll get some JavaScript and SCSS to create simple accessible, progressively enhanced modals.
 Create a modal this way:
 
-    <a href="#modal/test">open modal</a>
-    <div class="modal" id="modal/test">
-      <div class="modal-wrapper">
-        <div class="modal-content">
-          Modal content
-        </div>
-        <a class="modal-close" href="#">Close</a></div>
+```html
+<a href="#modal/test">open modal</a>
+<div class="modal" id="modal/test">
+  <div class="modal-wrapper">
+    <div class="modal-content">
+      Modal content
     </div>
+    <a class="modal-close" href="#">Close</a></div>
+</div>
+```
 
 Modals id attributes should start with `modal/` otherwise it wont't work.
 
@@ -229,23 +259,30 @@ Modals id attributes should start with `modal/` otherwise it wont't work.
 
 If you choose to include the router module, then you'll get a JavaScript module to handle routes in your application. Routes lets you easily dispatch based on url-style strings. It's particularly useful for one page website applications, to switch from one state to another based on the URL hash changes, which allows you to store your application state into the browser history, and to use deep linking functionalities:
 
-    let router = new Router(()=> defaultBehaviour());
-    router.addRoute('/route/:dynamic-prop/path/:other-prop', (dynProp, otherProp, fullHash) => doSomething(dynProp, otherProp, fullHash));
+```js
+let router = new Router(()=> defaultBehaviour());
+router.addRoute('/route/:dynamic-prop/path/:other-prop', (dynProp, otherProp, fullHash) => doSomething(dynProp, otherProp, fullHash));
+```  
 
 For example, imagine you have a link in your page:
 
-    <a href="#/product/23">My awesome product</a>
+```html
+<a href="#/product/23">My awesome product</a>
+```
 
 And in your JavaScript:
 
-    let router = new Router(()=> showHomePage());
-    router.addRoute('/product/:product-id', (pid) => showProductById(pid));
+```js
+let router = new Router(()=> showHomePage());
+router.addRoute('/product/:product-id', (pid) => showProductById(pid));
+```
 
 Then on click on the link, the `showProductById` method will be called, with the product id as argument.
 You also can invoke a navigation event straight from JavaScript like this:
 
-    router.callRoute('#/product/1523');
-
+```js
+router.callRoute('#/product/1523');
+```
 
 ###### Router methods
 
@@ -269,7 +306,7 @@ Based on [event-pubsub](https://www.npmjs.com/package/event-pubsub), a custom ev
 * `on`: will bind the handler function to the the type event. Just like addEventListener in the browser, takes 2 parameters:
     * `type`: a string representing the event.
     * `callback`: a method you want to invoke when this type of event is triggered.
-* `off`: will unbind the handler function from the the type event. If the handler is *, all handlers for the event type will be removed, takes 2 parameters:
+* `off`: will unbind the handler function from the the type event. If the handler is "*", all handlers for the event type will be removed, takes 2 parameters:
     * `type`: a string representing the event.
     * `callback`: a method you want to remove when this type of event is triggered, or `*` if you want to remove all event handlers for this event.
 * `trigger`: will call all handler functions bound to the event type and pass all `...data` arguments to those handlers:
@@ -280,62 +317,75 @@ Based on [event-pubsub](https://www.npmjs.com/package/event-pubsub), a custom ev
 
 Just generate unique IDs:
 
-    import uuid from 'UUID';
-    console.log(uuid());
+```js
+import uuid from 'rkgttr-uuid';
+console.log(uuid());
+```
+
+##### PRNG module
+
+Just a small and fast pseudo random number generator:
+
+```js
+import Prng from 'rkgttr-prng';
+console.log(new Prng(), new Prng(12));
+```
 
 ##### Elements module
 
 A module to build DOM components, inspired from [David Gilbertson](https://github.com/davidgilbertson/know-it-all/). Example:
 
-    import Publisher from 'Publisher';
-    import uuid from 'UUID';
-    import { div, img, h2, p, a } from 'Elements';
-    const MediaObject = (initialData) => {
-      let el = null,
-        uid = uuid();
+```js
+import Publisher from 'Publisher';
+import uuid from 'rkgttr-uuid';
+import { div, img, h2, p, a } from 'Elements';
+const MediaObject = (initialData) => {
+  let el = null,
+    uid = uuid();
 
-      const render = data => (
-        div({ 
-            className: 'media',
-            dataset: {uid: uid}
-          },
-          a({
-              className: 'img',
-              href: '#',
-              onclick: (e) => {
-                e.preventDefault();
-                Publisher.trigger(`data:change`, {uid:uid, title: 'Hello', name: 'Mars' });
-              }
-            },
-            img({ src: 'http://placehold.it/350x150', alt: 'Alt text' })
-          ),
-          div({ className: 'bd' },
-            h2(data.title),
-            p(data.name)
-          )
-        )
-      );
+  const render = data => (
+    div({
+        className: 'media',
+        dataset: {uid: uid}
+      },
+      a({
+          className: 'img',
+          href: '#',
+          onclick: (e) => {
+            e.preventDefault();
+            Publisher.trigger(`data:change`, {uid:uid, title: 'Hello', name: 'Mars' });
+          }
+        },
+        img({ src: 'http://placehold.it/350x150', alt: 'Alt text' })
+      ),
+      div({ className: 'bd' },
+        h2(data.title),
+        p(data.name)
+      )
+    )
+  );
 
-      const update = (prevEl, newData) => {
-        if(newData.uid !== uid) {
-          return prevEl;
-        }
-        const nextEl = render(newData);
+  const update = (prevEl, newData) => {
+    if(newData.uid !== uid) {
+      return prevEl;
+    }
+    const nextEl = render(newData);
 
-        if (nextEl.isEqualNode(prevEl)) {
-          console.warn(`render() was called but there was no change in the rendered output`, el);
-        } else {
-          prevEl.parentElement.replaceChild(nextEl, prevEl);
-        }
+    if (nextEl.isEqualNode(prevEl)) {
+      console.warn(`render() was called but there was no change in the rendered output`, el);
+    } else {
+      prevEl.parentElement.replaceChild(nextEl, prevEl);
+    }
 
-        return nextEl;
-      };
+    return nextEl;
+  };
 
-      Publisher.on(`data:change`, (newData) => el = update(el, newData));
+  Publisher.on(`data:change`, (newData) => el = update(el, newData));
 
-      el = render(initialData);
+  el = render(initialData);
 
-      return el;
+  return el;
 
-    };
-    document.body.appendChild(MediaObject({ title: 'Hello', name: 'World' }));
+};
+document.body.appendChild(MediaObject({ title: 'Hello', name: 'World' }));
+```

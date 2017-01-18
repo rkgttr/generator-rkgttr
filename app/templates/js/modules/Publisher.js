@@ -1,3 +1,5 @@
+import 'ArrayIncludesPolyfill';
+
 class PublisherClass {
   constructor(scope) {
     if (scope.PublisherInstance === undefined) {

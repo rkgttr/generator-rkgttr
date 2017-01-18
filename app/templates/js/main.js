@@ -5,6 +5,8 @@
 import * as Q from 'Q';
 import * as Helpers from 'Helpers';
 import Publisher from 'Publisher';
+import PRNG from 'rkgttr-prng';
+import UUID from 'rkgttr-uuid';
 
 
 // uncomment following line if script fails in Internet Explorer, or other
@@ -12,7 +14,7 @@ import Publisher from 'Publisher';
 
 // uncomment following line if you need to polyfill Element.matches, for IE support and prefixed matches
 // import 'MatchesPolyfill';
- 
+
 // uncomment following line if you need to polyfill WeakMap, for IE support, useless if you include babel-polyfill
 // import 'WeakMapPolyfill';
 
@@ -25,8 +27,6 @@ import Publisher from 'Publisher';
 // uncomment following line if you need to polyfill MutationObserver, for IE10 support
 // import 'MutationObserverPolyfill';
 
-// uncomment following line if you need to polyfill Array.includes, for IE support. Mandatory if you make use of the Publisher module
-// import 'ArrayIncludesPolyfill';
 
 /**
  *
@@ -95,5 +95,3 @@ App_<%= camelname %>.instance = undefined;
  *
  **/
 App_<%= camelname %>.getInstance().init();
-
-

@@ -260,6 +260,7 @@ Modals id attributes should start with `modal/` otherwise it wont't work.
 If you choose to include the router module, then you'll get a JavaScript module to handle routes in your application. Routes lets you easily dispatch based on url-style strings. It's particularly useful for one page website applications, to switch from one state to another based on the URL hash changes, which allows you to store your application state into the browser history, and to use deep linking functionalities:
 
 ```js
+import Router from 'Router';
 let router = new Router(()=> defaultBehaviour());
 router.addRoute('/route/:dynamic-prop/path/:other-prop', (dynProp, otherProp, fullHash) => doSomething(dynProp, otherProp, fullHash));
 ```  
@@ -336,9 +337,9 @@ console.log(new Prng(), new Prng(12));
 A module to build DOM components, inspired from [David Gilbertson](https://github.com/davidgilbertson/know-it-all/). Example:
 
 ```js
-import Publisher from 'Publisher';
+import Publisher from 'rkgttr-publisher';
 import uuid from 'rkgttr-uuid';
-import { div, img, h2, p, a } from 'Elements';
+import { div, img, h2, p, a } from 'rkgttr-elements';
 const MediaObject = (initialData) => {
   let el = null,
     uid = uuid();

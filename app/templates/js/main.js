@@ -1,31 +1,27 @@
 <% if (includeRouter){ %> import Router from 'Router';<% } %>
 <% if (includeModal){ %> import Modal from 'Modal';<% } %>
-
 <% if (includeJquery){ %> import 'jquery';<% } %>
-import * as Q from 'Q';
 import * as Helpers from 'Helpers';
-import Publisher from 'Publisher';
-import PRNG from 'rkgttr-prng';
-import UUID from 'rkgttr-uuid';
 
+import * as Q from 'rkgttr-q';
+import Publisher from 'rkgttr-publisher';
+import uuid from 'rkgttr-uuid';
+import Prng from 'rkgttr-prng';
 
-// uncomment following line if script fails in Internet Explorer, or other
+// Uncomment the following if you wish to use the Elements module, add the elements you want to unlock in the {}
+// import { div, img, h2, p, a } from 'rkgttr-elements';
+
+// uncomment the following line if script fails in Internet Explorer, or other, due to ES6 features that need the Babel Polyfill
 // import 'babel-polyfill';
 
-// uncomment following line if you need to polyfill Element.matches, for IE support and prefixed matches
-// import 'MatchesPolyfill';
-
-// uncomment following line if you need to polyfill WeakMap, for IE support, useless if you include babel-polyfill
-// import 'WeakMapPolyfill';
-
-// uncomment following line if you need to polyfill Element.classList, for IE9 support
-// import 'ClassListPolyfills;
-
-// uncomment following line if you need to polyfill Console, for IE9 support
-// import 'ConsolePolyfills';
-
-// uncomment following line if you need to polyfill MutationObserver, for IE10 support
-// import 'MutationObserverPolyfill';
+// uncomment some of the following lines if you wish to use some specific polyfills
+// import 'rkgttr-weakmappolyfill';
+// import 'rkgttr-mutationobserverpolyfill';
+// import 'rkgttr-matchespolyfill';
+// import 'rkgttr-consolepolyfill';
+// import 'rkgttr-classlistpolyfill';
+// import 'rkgttr-arrayincludespolyfill';
+// import 'rkgttr-arrayfrompolyfill';
 
 
 /**

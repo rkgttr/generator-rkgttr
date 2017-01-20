@@ -40,8 +40,12 @@
     "imagemin-mozjpeg": "^5.1.0",
     "imagemin-pngquant": "^4.2.2",
     <% if (includeJquery){ %>"jquery": "^3.1.1",<% } %>
-    "rkgttr-prng": "^0.0.1",
+    "rkgttr-prng": "^0.0.2",
     "rkgttr-uuid": "^0.0.1",
+    "rkgttr-polyfills": "^0.0.6",
+    "rkgttr-elements": "^0.0.5",
+    "rkgttr-publisher": "^0.0.5",
+    "rkgttr-q": "^0.0.6",
     "require-dir": "^0.3.1",
     "rollup-plugin-includepaths": "^0.2.1",
     "rollup-plugin-node-resolve": "^2.0.0",

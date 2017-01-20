@@ -1,5 +1,5 @@
 import Router from 'Router';
-import * as Q from 'Q';
+import * as Q from 'rkgttr-q';
 import { whichAnimationEvent } from 'Helpers';
 
 export default function() {

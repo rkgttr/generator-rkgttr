@@ -3,5 +3,4 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-longtail' ]; then cd .. && eval "mv $currentfolder generator-longtail" && cd generator-longtail; fi
-
+  - if [ "$currentfolder" != 'generator-rkgttr' ]; then cd .. && eval "mv $currentfolder generator-rkgttr" && cd generator-rkgttr; fi

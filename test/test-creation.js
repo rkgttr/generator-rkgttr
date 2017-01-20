@@ -3,14 +3,14 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
-describe('longtail generator', function () {
+describe('rkgttr generator', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('longtail:app', [
+      this.app = helpers.createGenerator('rkgttr:app', [
         '../../app'
       ]);
       done();

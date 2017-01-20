@@ -55,7 +55,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       type: 'checkbox',
       name: 'features',
       message: 'What more would you like?',
-      choices: [ 
+      choices: [
       {
          name: 'Include form elements style overrides',
          value: 'overrideForm',
@@ -120,7 +120,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
       var features = props.features;
 
       function hasFeature( feat ) {
-        return features.indexOf( feat ) !== -1;
+        return (features || []).indexOf( feat ) !== -1;
       }
       this.slugname = this._.slugify( props.name );
       this.camelname = this._.camelize( this.slugname );
@@ -167,7 +167,7 @@ var RkgttrGenerator = yeoman.generators.Base.extend( {
     if(this.usePug) {
       this.directory( 'pug', 'src/pug' );
     } else {
-      this.directory( 'templates', 'src/templates' ); 
+      this.directory( 'templates', 'src/templates' );
     }
     this.directory( 'gulp', 'gulp' );
     this.expandFiles( '*', {

@@ -117,14 +117,14 @@ module.exports = class extends Generator {
 
   writing() {
     let dirToCreate = [
-        './build',
-        './build/img',
-        './build/fonts',
-        './build/css',
-        './build/js',
-        './build/js/vendor',
-        'src/img/'
-      ],
+      './build',
+      './build/img',
+      './build/fonts',
+      './build/css',
+      './build/js',
+      './build/js/vendor',
+      'src/img/'
+    ],
       templatesFiles = {
         'scss/**/*.scss': 'src/scss',
         'js/**/*.js': 'src/js',
@@ -135,8 +135,8 @@ module.exports = class extends Generator {
       },
       copyFiles = {
         'favicon/**/*.{png,xml,json,ico}': 'src/favicon',
-        'gitignore': '.gitignore',
-        'babelrc': '.babelrc'
+        gitignore: '.gitignore',
+        babelrc: '.babelrc'
       };
 
     templatesFiles[`${this.props.usePug

@@ -1,4 +1,10 @@
-# generator-rkgttr [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# [generator-rkgttr](https://github.com/rkgttr/generator-rkgttr)
+
+[![NPM version](http://img.shields.io/npm/v/generator-rkgttr.svg?style=flat-square)](https://www.npmjs.com/package/generator-rkgttr)
+[![NPM downloads](http://img.shields.io/npm/dm/generator-rkgttr.svg?style=flat-square)](https://www.npmjs.com/package/generator-rkgttr)
+[![Build Status](http://img.shields.io/travis/rkgttr/generator-rkgttr/master.svg?style=flat-square)](https://travis-ci.org/rkgttr/generator-rkgttr)
+[![Coverage Status](https://img.shields.io/coveralls/rkgttr/generator-rkgttr.svg?style=flat-square)](https://coveralls.io/rkgttr/generator-rkgttr)
+[![Dependency Status](http://img.shields.io/david/rkgttr/generator-rkgttr.svg?style=flat-square)](https://david-dm.org/rkgttr/generator-rkgttr)
 > Static website generator using gulp, rollup, es6, scss, pug or assemble
 
 # RKGTTR Frontend Setup
@@ -395,13 +401,3 @@ document.body.appendChild(MediaObject({ title: 'Hello', name: 'World' }));
 ## License
 
 MIT © [Eric Guittiere](http://www.rkgttr.com)
-
-
-[npm-image]: https://badge.fury.io/js/generator-rkgttr.svg
-[npm-url]: https://npmjs.org/package/generator-rkgttr
-[travis-image]: https://travis-ci.org/rkgttr/generator-rkgttr.svg?branch=master
-[travis-url]: https://travis-ci.org/rkgttr/generator-rkgttr
-[daviddm-image]: https://david-dm.org/rkgttr/generator-rkgttr.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/rkgttr/generator-rkgttr
-[coveralls-image]: https://coveralls.io/repos/rkgttr/generator-rkgttr/badge.svg
-[coveralls-url]: https://coveralls.io/r/rkgttr/generator-rkgttr

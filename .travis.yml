@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - '0.10'
-before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-rkgttr' ]; then cd .. && eval "mv $currentfolder generator-rkgttr" && cd generator-rkgttr; fi
+  - v7
+  - v6
+  - v5
+  - v4
+  - '0.12'

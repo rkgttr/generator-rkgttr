@@ -1,4 +1,2 @@
-node_modules/
-temp/
-generator.sublime-workspace
-generator.sublime-project
+node_modules
+coverage

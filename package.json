@@ -1,6 +1,6 @@
 {
   "name": "generator-rkgttr",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Static website generator using gulp, rollup, babel, es6, scss, pug or assemble",
   "homepage": "",
   "author": {

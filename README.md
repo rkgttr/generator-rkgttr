@@ -3,7 +3,6 @@
 [![NPM version](http://img.shields.io/npm/v/generator-rkgttr.svg?style=flat-square)](https://www.npmjs.com/package/generator-rkgttr)
 [![NPM downloads](http://img.shields.io/npm/dm/generator-rkgttr.svg?style=flat-square)](https://www.npmjs.com/package/generator-rkgttr)
 [![Build Status](http://img.shields.io/travis/rkgttr/generator-rkgttr/master.svg?style=flat-square)](https://travis-ci.org/rkgttr/generator-rkgttr)
-[![Coverage Status](https://img.shields.io/coveralls/rkgttr/generator-rkgttr.svg?style=flat-square)](https://coveralls.io/rkgttr/generator-rkgttr)
 [![Dependency Status](http://img.shields.io/david/rkgttr/generator-rkgttr.svg?style=flat-square)](https://david-dm.org/rkgttr/generator-rkgttr)
 > Static website generator using gulp, rollup, es6, scss, pug or assemble
 

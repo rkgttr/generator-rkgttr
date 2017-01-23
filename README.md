@@ -6,6 +6,9 @@
 [![Dependency Status](http://img.shields.io/david/rkgttr/generator-rkgttr.svg?style=flat-square)](https://david-dm.org/rkgttr/generator-rkgttr)
 > Static website generator using gulp, rollup, es6, scss, pug or assemble
 
+> ## Warning
+> **If you previously used a version prior to 1.0.3, and want to update to the latest version, you might need to `npm uninstall -g generator-rkgttr` before installing the new version.**
+
 # RKGTTR Frontend Setup
 
 This Yeoman generator will help you through the process of setting up static frontend projects. It includes:

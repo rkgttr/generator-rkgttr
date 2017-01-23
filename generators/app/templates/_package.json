@@ -26,6 +26,7 @@
     "gulp-plumber": "^1.1.0",
     <% if (usePug) { %>
     "gulp-pug": "^2.0.0",
+    "jstransformer-markdown-it": "^2.0.0",
     <% } else { %>
     "lodash": "^4.17.2",
     "assemble": "^0.17.1",

@@ -14,7 +14,7 @@ body {
   color: $black;
   font-family: $global-font;
   &.grid {
-    background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(1rem - 1px) rgba(#0092b7, .3) 0, rgba(#0092b7, .3) 1rem);
+    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(1rem - 1px), rgba(#0092b7, .3) 0, rgba(#0092b7, .3) 1rem);
   }
 }
 

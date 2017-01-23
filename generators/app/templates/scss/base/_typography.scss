@@ -25,11 +25,28 @@ li {
 }
 
 p,
-pre,
 ins,
 caption,
 address {
   @include plumber();
+}
+
+code,
+pre {
+  font-family: $monospace-font;
+}
+
+pre {
+  @include plumber-box( $margin: 2 3, $padding: 2 2);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  overflow: auto;
+  background: $pre-background;
+}
+
+code {
+  font-family: $monospace-font;
+  @include plumber($baseline: $monospace-baseline);
 }
 
 blockquote {

@@ -1,8 +1,6 @@
 @include plumber-set-defaults( $baseline: $global-baseline);
-body,
 html {
   height: 100%;
-  background: $white;
 }
 
 html {
@@ -11,6 +9,8 @@ html {
 }
 
 body {
+  min-height: 100%;
+  background: $white;
   color: $black;
   font-family: $global-font;
   &.grid {

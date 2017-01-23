@@ -11,6 +11,7 @@ $input-readonly-background-color: #eee;
 $input-readonly-color: #777;
 $legend-color: #333;
 $legend-border-bottom-color: #e5e5e5;
+$pre-background: #e7e7e7;
 
 
 $table-border-color: #cbcbcb;
@@ -27,7 +28,7 @@ $button-hover-focus-background-color: #d3d3d3;
 $modal-overlay-background: rgba($black, .5);
 $modal-background: #fefefe;
 $modal-shadow-color: rgba($black, .75);
-  
+
 
 $tooltip-color: #444;
 $tooltip-background-color: #666;
@@ -38,6 +39,8 @@ $global-font: Georgia, Times, Times New Roman, serif;
 $global-baseline: 0.151123; // baseline of your font, calculate it here: https://jamonserrano.github.io/plumber-sass/measure/
 $header-font: Arial, Helvetica Neue, Helvetica, sans-serif;
 $header-baseline: 0.153320; // baseline of your font, calculate it here: https://jamonserrano.github.io/plumber-sass/measure/
+$monospace-font: Consolas, monaco, monospace;
+$monospace-baseline: 0.166; // baseline of your font, calculate it here: https://jamonserrano.github.io/plumber-sass/measure/
 $min-global-font-size: 14px;
 $max-global-font-size: 20px;
 
@@ -48,7 +51,7 @@ $medium: 'only screen and (min-width:48em)';
 $large: 'only screen and (min-width:64em)';
 $xlarge: 'only screen and (min-width:96em)';
 
-// max width of content: 
+// max width of content:
 $max-width: 120rem; // ($max-global-font-size / 2) * 120, adjust to your liking
 
 
@@ -63,8 +66,7 @@ $button-border-radius: 2px;
 
 // modal
 $modal-border-radius: 2px;
-  
+
 
 // tooltip
 $tooltip-border-radius: 2px;
-  

@@ -45,7 +45,7 @@
     "rkgttr-uuid": "^0.0.1",
     "rkgttr-polyfills": "^0.0.6",
     "rkgttr-elements": "^0.0.5",
-    "rkgttr-publisher": "^0.0.6",
+    "rkgttr-publisher": "^0.0.8",
     "rkgttr-q": "^0.0.7",
     "require-dir": "^0.3.1",
     "rollup-plugin-includepaths": "^0.2.1",

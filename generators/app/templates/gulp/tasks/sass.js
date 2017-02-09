@@ -13,7 +13,7 @@ import config from '../config';
 gulp.task( 'styles', ()=> {
   return gulp.src( './src/scss/main.scss' )
     .pipe(plumber())
-    .pipe( sass() )
+    .pipe( sass.sync() )
     .pipe( cmq() )
     .pipe( autoprefixer( 'last 2 versions', 'ie9' ) )
     .pipe( rename( 'styles.min.css' ) )

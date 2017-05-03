@@ -44,7 +44,7 @@
     "rkgttr-prng": "^0.0.2",
     "rkgttr-uuid": "^0.0.1",
     "rkgttr-polyfills": "^0.0.6",
-    "rkgttr-elements": "^0.0.5",
+    "rkgttr-elements": "^0.0.7",
     "rkgttr-publisher": "^0.0.8",
     "rkgttr-q": "^0.0.7",
     "require-dir": "^0.3.1",

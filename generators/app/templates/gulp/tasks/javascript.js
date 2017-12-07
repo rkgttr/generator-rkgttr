@@ -23,7 +23,8 @@ let includePathOptions = {
   };
 gulp.task('js', () => {
   return rollup({
-    entry: './src/js/main.js',
+    input: './src/js/main.js',
+    format: 'iife',
     plugins: [
       includePaths(includePathOptions),
       nodeResolve(nodeResolveOptions)
